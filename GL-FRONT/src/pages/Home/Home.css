@@ -1,0 +1,12 @@
+.home-container {
+  border: 1px solid black;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+}
+
+.content-container {
+  background-color: var(--secondary);
+  width: 100%;
+}

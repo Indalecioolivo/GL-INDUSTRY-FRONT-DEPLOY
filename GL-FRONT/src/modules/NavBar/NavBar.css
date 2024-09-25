@@ -1,0 +1,25 @@
+nav {
+  background-color: var(--primary);
+
+  width: 8rem;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  border-bottom: 2px solid var(--secondary);
+
+  width: 6rem;
+
+  padding: 1.5rem;
+  margin-top: 1rem;
+
+  cursor: pointer;
+}
+
+img:hover {
+  background-color: var(--hovers);
+}
