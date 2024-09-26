@@ -3,13 +3,18 @@ header {
   height: 7rem;
 
   background-color: var(--primary);
-  border-left: 2px solid var(--secondary);
 
   display: flex;
   align-items: center;
 }
 
 h1 {
-  padding-left: 1rem;
+  height: 6rem;
+
   color: var(--secondary);
+  border-left: 2px solid var(--secondary);
+
+  text-align: center;
+  align-content: center;
+  padding-left: 1rem;
 }

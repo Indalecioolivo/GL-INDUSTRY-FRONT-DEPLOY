@@ -22,4 +22,5 @@ img {
 
 img:hover {
   background-color: var(--hovers);
+  border-radius: 1rem;
 }
