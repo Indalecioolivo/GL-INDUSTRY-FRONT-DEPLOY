@@ -1,7 +1,8 @@
 import "./Home.css";
 import Header from "../../modules/Header/Header";
 import NavBar from "../../modules/NavBar/NavBar";
-import StockModule from "../../modules/StockModule/StockModule";
+// import StockModule from "../../modules/StockModule/StockModule";
+import StockFlow from "../../modules/StockFlow/StockFlow";
 
 export default function Home() {
   return (
@@ -9,7 +10,8 @@ export default function Home() {
       <NavBar />
       <div className="content-container">
         <Header />
-        <StockModule />
+        {/* <StockModule /> */}
+        <StockFlow />
       </div>
     </div>
   );

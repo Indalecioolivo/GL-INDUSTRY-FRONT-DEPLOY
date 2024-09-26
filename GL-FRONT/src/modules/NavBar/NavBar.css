@@ -9,7 +9,7 @@ nav {
   align-items: center;
 }
 
-img {
+nav img {
   border-bottom: 2px solid var(--secondary);
 
   width: 6rem;
@@ -20,7 +20,7 @@ img {
   cursor: pointer;
 }
 
-img:hover {
+nav img:hover {
   background-color: var(--hovers);
   border-radius: 1rem;
 }
