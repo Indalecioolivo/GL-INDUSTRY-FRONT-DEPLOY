@@ -2,20 +2,28 @@ import "./ModalRegisterFlow.css";
 import CloseIcon from "../../assets/close-icon.png";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
-import { generatePath } from "react-router-dom";
 
 export default function ModalRegisterFlow() {
   const { setShowModalRegisterFlow } = useContext(GeneralContext);
+  function handleClick(e) {
+    e.stopPropagation();
+    setShowModalRegisterFlow(false);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <div className="modalRegister-container">
       <div className="modalRegister">
-        <img
-          src={CloseIcon}
-          alt=""
-          onClick={() => setShowModalRegisterFlow(false)}
-        />
+        <img src={CloseIcon} alt="" onClick={(e) => handleClick(e)} />
         <h2>Registrar</h2>
-        <form action="">
+        <form
+          action=""
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
           <label htmlFor="">Tipo de Fluxo:</label>
           <select name="" id="">
             <option value="">Produção</option>
