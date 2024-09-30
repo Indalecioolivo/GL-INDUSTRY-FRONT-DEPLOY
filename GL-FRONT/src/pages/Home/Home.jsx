@@ -3,6 +3,7 @@ import Header from "../../modules/Header/Header";
 import NavBar from "../../modules/NavBar/NavBar";
 // import StockModule from "../../modules/StockModule/StockModule";
 import StockFlow from "../../modules/StockFlow/StockFlow";
+import ModalRegisterFlow from "../../modules/ModalRegisterFlow/ModalRegisterFlow";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <Header />
         {/* <StockModule /> */}
         <StockFlow />
+        {/* {<ModalRegisterFlow />} */}
       </div>
     </div>
   );

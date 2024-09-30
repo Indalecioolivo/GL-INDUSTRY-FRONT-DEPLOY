@@ -10,7 +10,6 @@ export default function StockFlow() {
         <button>Registrar</button>
         <div className="toInput">
           <input type="text" />
-          <img src={CloseIcon} className="closeIcon" alt="" />
           <img src={SearchIcon} className="searchIcon" alt="" />
         </div>
       </p>

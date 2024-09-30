@@ -54,19 +54,10 @@ section p .toInput input {
   font-size: large;
 }
 
-section p .toInput .closeIcon {
-  height: 3rem;
-
-  position: relative;
-  left: -3rem;
-  cursor: pointer;
-}
-
 section p .toInput .searchIcon {
   height: 3rem;
 
   position: relative;
-  left: -3rem;
 
   background-color: var(--primary);
   border-top-right-radius: 1rem;
