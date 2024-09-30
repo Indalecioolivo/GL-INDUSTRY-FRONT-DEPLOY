@@ -1,13 +1,17 @@
 import "./StockFlow.css";
 import { flowdb } from "../../services/db";
-import CloseIcon from "../../assets/close-icon.png";
 import SearchIcon from "../../assets/search-icon.png";
+import { GeneralContext } from "../../context/GeneralContext";
+import { useContext } from "react";
 
 export default function StockFlow() {
+  const { setShowModalRegisterFlow } = useContext(GeneralContext);
   return (
     <section>
       <p>
-        <button>Registrar</button>
+        <button onClick={() => setShowModalRegisterFlow(true)}>
+          Registrar
+        </button>
         <div className="toInput">
           <input type="text" />
           <img src={SearchIcon} className="searchIcon" alt="" />

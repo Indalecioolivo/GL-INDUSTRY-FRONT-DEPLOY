@@ -7,6 +7,7 @@ export function GeneralContextProvider({ children }) {
   const [stockHome, setStockHome] = useState(true);
   const [productHome, setProductHome] = useState(false);
   const [flowHome, setFlowHome] = useState(false);
+  const [showModalRegisterFlow, setShowModalRegisterFlow] = useState(false);
 
   function setContentHome(content) {
     setTitleContentHome(content);
@@ -23,6 +24,8 @@ export function GeneralContextProvider({ children }) {
         productHome,
         flowHome,
         setContentHome,
+        showModalRegisterFlow,
+        setShowModalRegisterFlow,
       }}
     >
       {children}

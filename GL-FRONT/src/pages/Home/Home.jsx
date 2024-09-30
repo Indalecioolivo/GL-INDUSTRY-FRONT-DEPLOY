@@ -8,7 +8,8 @@ import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
 
 export default function Home() {
-  const { stockHome, productHome, flowHome } = useContext(GeneralContext);
+  const { stockHome, productHome, flowHome, showModalRegisterFlow } =
+    useContext(GeneralContext);
   return (
     <div className="home-container">
       <NavBar />
@@ -17,6 +18,7 @@ export default function Home() {
         {stockHome ? <StockModule /> : ""}
         {productHome ? "" : ""}
         {flowHome ? <StockFlow /> : ""}
+        {showModalRegisterFlow ? <ModalRegisterFlow /> : ""}
       </div>
     </div>
   );
