@@ -6,10 +6,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login.jsx";
 import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
+import { GeneralContextProvider } from "./context/GeneralContext.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "home",
+    path: "/home",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
@@ -27,6 +28,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <GeneralContextProvider>
+      <RouterProvider router={router} />
+    </GeneralContextProvider>
   </StrictMode>
 );

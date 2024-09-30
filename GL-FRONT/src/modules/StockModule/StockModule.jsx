@@ -17,7 +17,7 @@ export default function StockModule() {
         </thead>
         <tbody>
           {db.map((product) => (
-            <tr>
+            <tr key={product.id}>
               <td>{product.name}</td>
               <td>{product.volume}</td>
               <td>{product.stock}</td>

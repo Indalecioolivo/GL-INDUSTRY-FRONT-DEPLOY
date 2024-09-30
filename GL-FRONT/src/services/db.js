@@ -139,6 +139,7 @@ const db = [
 const flowdb = [
   {
     name: "curly",
+    id: 1,
     amount: 1,
     date: "23/02/2024",
     type: "Produção",
@@ -146,6 +147,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 2,
     amount: 2,
     date: "23/02/2024",
     type: "Produção",
@@ -153,6 +155,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 3,
     amount: 1,
     date: "23/02/2024",
     type: "Produção",
@@ -160,6 +163,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 4,
     amount: 6,
     date: "23/02/2024",
     type: "Produção",
@@ -167,6 +171,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 5,
     amount: 7,
     date: "23/02/2024",
     type: "Produção",
@@ -174,6 +179,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 6,
     amount: 2,
     date: "23/02/2024",
     type: "Produção",
@@ -181,6 +187,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 7,
     amount: 7,
     date: "23/02/2024",
     type: "Produção",
@@ -188,6 +195,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 8,
     amount: 2,
     date: "23/02/2024",
     type: "Produção",
@@ -195,6 +203,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 9,
     amount: 7,
     date: "23/02/2024",
     type: "Produção",
@@ -202,6 +211,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 10,
     amount: 2,
     date: "23/02/2024",
     type: "Produção",
@@ -209,6 +219,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 11,
     amount: 7,
     date: "23/02/2024",
     type: "Produção",
@@ -216,6 +227,7 @@ const flowdb = [
   },
   {
     name: "curly",
+    id: 12,
     amount: 2,
     date: "23/02/2024",
     type: "Produção",

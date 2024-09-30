@@ -24,7 +24,7 @@ export default function StockFlow() {
         </thead>
         <tbody>
           {flowdb.map((fluxo) => (
-            <tr>
+            <tr key={fluxo.id}>
               <td>{fluxo.name}</td>
               <td>{fluxo.type}</td>
               <td>{fluxo.amount}</td>
