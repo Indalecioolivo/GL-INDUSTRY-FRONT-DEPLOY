@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-section {
+.login-container section {
   background-color: var(--primary);
   border-radius: 2rem;
 
@@ -23,14 +23,14 @@ section {
   gap: 3rem;
 }
 
-section img {
+.login-container section img {
   width: 10rem;
   border-radius: 50%;
 
   background-color: var(--secondary);
 }
 
-section form {
+.login-container section form {
   width: 25rem;
   height: 25rem;
 
@@ -43,17 +43,17 @@ section form {
   justify-content: center;
 }
 
-section form h1 {
+.login-container section form h1 {
   text-align: center;
   margin-bottom: 1rem;
   color: black;
 }
 
-section form label {
+.login-container section form label {
   width: 20rem;
 }
 
-section form input {
+.login-container section form input {
   margin-bottom: 1.5rem;
 
   width: 20rem;
@@ -63,7 +63,7 @@ section form input {
   padding-left: 0.2rem;
 }
 
-section form #button-submit {
+.login-container section form #button-submit {
   width: 15rem;
   height: 3.5rem;
 
@@ -79,6 +79,6 @@ section form #button-submit {
   cursor: pointer;
 }
 
-section form #button-submit:hover {
+.login-container section form #button-submit:hover {
   background-color: var(--hovers);
 }

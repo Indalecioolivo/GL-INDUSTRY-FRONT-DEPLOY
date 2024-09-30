@@ -13,7 +13,7 @@ export default function Home() {
         <Header />
         {/* <StockModule /> */}
         <StockFlow />
-        {/* {<ModalRegisterFlow />} */}
+        {<ModalRegisterFlow />}
       </div>
     </div>
   );
