@@ -5,6 +5,7 @@ import StockModule from "../../modules/StockModule/StockModule";
 import RegisteredProducts from "../../modules/RegisteredProducts/RegisteredProducts";
 import StockFlow from "../../modules/StockFlow/StockFlow";
 import ModalRegisterFlow from "../../modules/ModalRegisterFlow/ModalRegisterFlow";
+import ModalProductInfo from "../../modules/ModalProductInfo/ModalProductInfo";
 
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
@@ -21,6 +22,7 @@ export default function Home() {
         {productHome ? <RegisteredProducts /> : ""}
         {flowHome ? <StockFlow /> : ""}
         {showModalRegisterFlow ? <ModalRegisterFlow /> : ""}
+        <ModalProductInfo />
       </div>
     </div>
   );

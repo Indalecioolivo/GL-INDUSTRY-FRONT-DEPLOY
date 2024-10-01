@@ -1,0 +1,44 @@
+.modalProductInfo-container {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(139, 198, 233, 0.5);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalProductInfo-container .modalProductInfo {
+  width: 40rem;
+  height: 45rem;
+
+  background-color: var(--secondary);
+  border-radius: 3rem;
+}
+
+.modalProductInfo-container .modalProductInfo img {
+  height: 2.5rem;
+
+  position: relative;
+  left: 35rem;
+  top: 2.7rem;
+  z-index: 1;
+
+  cursor: pointer;
+}
+
+.modalProductInfo-container .modalProductInfo img:hover {
+  background-color: var(--hovers);
+  border-radius: 50%;
+}
+
+.modalProductInfo-container .modalProductInfo h2 {
+  height: 2.5rem;
+  text-align: center;
+}
