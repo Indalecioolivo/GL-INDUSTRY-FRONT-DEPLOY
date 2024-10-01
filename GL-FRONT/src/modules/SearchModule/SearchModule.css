@@ -1,4 +1,4 @@
-section .filter-register-div {
+.filter-register-div {
   height: 7rem;
 
   display: flex;
@@ -7,7 +7,7 @@ section .filter-register-div {
   gap: 0.5rem;
 }
 
-section .filter-register-div button {
+.filter-register-div button {
   width: 15rem;
   height: 3rem;
 
@@ -21,11 +21,11 @@ section .filter-register-div button {
   cursor: pointer;
 }
 
-section .filter-register-div button:hover {
+.filter-register-div button:hover {
   background-color: var(--hovers);
 }
 
-section .filter-register-div .toInput {
+.filter-register-div .toInput {
   width: auto;
   height: 7rem;
 
@@ -34,7 +34,7 @@ section .filter-register-div .toInput {
   justify-content: center;
 }
 
-section .filter-register-div .toInput input {
+.filter-register-div .toInput input {
   width: 30rem;
   height: 3rem;
 
@@ -46,7 +46,7 @@ section .filter-register-div .toInput input {
   font-size: large;
 }
 
-section .filter-register-div .toInput .searchIcon {
+.filter-register-div .toInput .searchIcon {
   height: 3rem;
 
   background-color: var(--primary);
@@ -56,6 +56,6 @@ section .filter-register-div .toInput .searchIcon {
   cursor: pointer;
 }
 
-section .filter-register-div .toInput .searchIcon:hover {
+.filter-register-div .toInput .searchIcon:hover {
   background-color: var(--hovers);
 }
