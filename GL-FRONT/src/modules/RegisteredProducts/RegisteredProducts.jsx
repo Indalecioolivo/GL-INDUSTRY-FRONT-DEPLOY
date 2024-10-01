@@ -9,7 +9,16 @@ export default function RegisteredProducts() {
       <SearchModule />
       <div className="products-area">
         {db.map((product) => (
-          <CardProducts key={product.id} />
+          <CardProducts
+            key={product.id}
+            id={product.id}
+            bar_code={product.bar_code}
+            name={product.name}
+            description={product.description}
+            volume={product.volume}
+            stock={product.stock}
+            price={product.price}
+          />
         ))}
       </div>
     </section>

@@ -8,6 +8,17 @@ export function GeneralContextProvider({ children }) {
   const [productHome, setProductHome] = useState(false);
   const [flowHome, setFlowHome] = useState(false);
   const [showModalRegisterFlow, setShowModalRegisterFlow] = useState(false);
+  const [showModalProductInfo, setShowModalProductInfo] = useState(false);
+  const [toModalProductInfo, setToModalProductInfo] = useState({
+    showModal: false,
+    id: "",
+    bar_code: "",
+    name: "",
+    description: "",
+    volume: "",
+    stock: "",
+    price: "",
+  });
 
   function setContentHome(content) {
     setTitleContentHome(content);
@@ -26,6 +37,10 @@ export function GeneralContextProvider({ children }) {
         setContentHome,
         showModalRegisterFlow,
         setShowModalRegisterFlow,
+        showModalProductInfo,
+        setShowModalProductInfo,
+        toModalProductInfo,
+        setToModalProductInfo,
       }}
     >
       {children}
