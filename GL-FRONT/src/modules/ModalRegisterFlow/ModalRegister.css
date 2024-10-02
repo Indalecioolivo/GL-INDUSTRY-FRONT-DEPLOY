@@ -1,0 +1,83 @@
+.modalRegister-container {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(139, 198, 233, 0.5);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalRegister-container .modalRegister {
+  width: 40rem;
+  height: 45rem;
+
+  background-color: var(--secondary);
+  border-radius: 3rem;
+}
+
+.modalRegister-container .modalRegister img {
+  height: 2.5rem;
+
+  position: relative;
+  left: 35rem;
+  top: 2.7rem;
+  z-index: 1;
+
+  cursor: pointer;
+}
+
+.modalRegister-container .modalRegister img:hover {
+  background-color: var(--hovers);
+  border-radius: 50%;
+}
+
+.modalRegister-container .modalRegister h2 {
+  height: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.modalRegister-container .modalRegister form {
+  height: calc(45rem - 8.5rem);
+  padding-left: 3rem;
+}
+
+.modalRegister-container .modalRegister form select,
+.modalRegister-container .modalRegister form input {
+  width: 34rem;
+  height: 2rem;
+
+  display: block;
+
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+
+  font-size: medium;
+}
+
+.modalRegister-container .modalRegister form .button-register {
+  width: 15rem;
+  height: 3.5rem;
+
+  margin: 5rem 0 0 9.5rem;
+
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+
+  color: var(--secondary);
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.modalRegister-container .modalRegister form .button-register:hover {
+  background-color: var(--hovers);
+}

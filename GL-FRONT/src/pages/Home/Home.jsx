@@ -4,8 +4,8 @@ import NavBar from "../../modules/NavBar/NavBar";
 import StockModule from "../../modules/StockModule/StockModule";
 import RegisteredProducts from "../../modules/RegisteredProducts/RegisteredProducts";
 import StockFlow from "../../modules/StockFlow/StockFlow";
-import ModalRegisterFlow from "../../modules/ModalRegisterFlow/ModalRegisterFlow";
-import ModalProductInfo from "../../modules/ModalProductInfo/ModalProductInfo";
+import ModalRegister from "../../modules/ModalRegisterFlow/ModalRegister";
+import ModalToInformations from "../../modules/ModalProductInfo/ModalToInformations";
 
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
@@ -15,9 +15,8 @@ export default function Home() {
     stockHome,
     productHome,
     flowHome,
-    showModalRegisterFlow,
-    showModalProductInfo,
-    toModalProductInfo,
+    showModalRegister,
+    toModalInformations,
   } = useContext(GeneralContext);
   return (
     <div className="home-container">
@@ -27,8 +26,8 @@ export default function Home() {
         {stockHome ? <StockModule /> : ""}
         {productHome ? <RegisteredProducts /> : ""}
         {flowHome ? <StockFlow /> : ""}
-        {showModalRegisterFlow ? <ModalRegisterFlow /> : ""}
-        {toModalProductInfo.showModal ? <ModalProductInfo /> : ""}
+        {showModalRegister.showModal ? <ModalRegister /> : ""}
+        {toModalInformations.showModal ? <ModalToInformations /> : ""}
       </div>
     </div>
   );

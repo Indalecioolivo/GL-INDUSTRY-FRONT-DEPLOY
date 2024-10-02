@@ -4,10 +4,17 @@ import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
 
 export default function SearchModule() {
-  const { setShowModalRegisterFlow } = useContext(GeneralContext);
+  const { showModalRegister, setShowModalRegister } =
+    useContext(GeneralContext);
   return (
     <div className="filter-register-div">
-      <button onClick={() => setShowModalRegisterFlow(true)}>Registrar</button>
+      <button
+        onClick={() =>
+          setShowModalRegister({ ...showModalRegister, showModal: true })
+        }
+      >
+        Registrar
+      </button>
       <div className="toInput">
         <input type="text" />
         <img src={SearchIcon} className="searchIcon" alt="" />

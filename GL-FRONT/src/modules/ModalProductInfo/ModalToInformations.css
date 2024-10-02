@@ -1,4 +1,4 @@
-.modalRegister-container {
+.modalProductInfo-container {
   width: 100%;
   height: 100%;
 
@@ -14,7 +14,7 @@
   justify-content: center;
 }
 
-.modalRegister-container .modalRegister {
+.modalProductInfo-container .modalProductInfo {
   width: 40rem;
   height: 45rem;
 
@@ -22,7 +22,7 @@
   border-radius: 3rem;
 }
 
-.modalRegister-container .modalRegister img {
+.modalProductInfo-container .modalProductInfo img {
   height: 2.5rem;
 
   position: relative;
@@ -33,39 +33,29 @@
   cursor: pointer;
 }
 
-.modalRegister-container .modalRegister img:hover {
+.modalProductInfo-container .modalProductInfo img:hover {
   background-color: var(--hovers);
   border-radius: 50%;
 }
 
-.modalRegister-container .modalRegister h2 {
+.modalProductInfo-container .modalProductInfo h2 {
   height: 2.5rem;
   text-align: center;
 }
 
-.modalRegister-container .modalRegister form {
-  height: calc(45rem - 8.5rem);
-  padding-left: 3rem;
-}
-
-.modalRegister-container .modalRegister form select,
-.modalRegister-container .modalRegister form input {
-  width: 34rem;
-  height: 2rem;
-
+.modalProductInfo-container .modalProductInfo strong {
+  margin: 2rem 0 0 3rem;
   display: block;
-
-  margin-bottom: 1rem;
-  padding-left: 0.5rem;
-
-  font-size: medium;
+  font-size: large;
 }
 
-.modalRegister-container .modalRegister form .button-register {
-  width: 15rem;
-  height: 3.5rem;
+.modalProductInfo-container .modalProductInfo p {
+  margin-left: 3rem;
+}
 
-  margin: 2rem 0 0 9.5rem;
+.modalProductInfo-container .modalProductInfo button {
+  width: 15rem;
+  height: 3rem;
 
   border: none;
   border-radius: 0.5rem;
@@ -75,8 +65,10 @@
   font-weight: bold;
   font-size: medium;
   cursor: pointer;
+
+  margin: 10rem 0 0 13rem;
 }
 
-.modalRegister-container .modalRegister form .button-register:hover {
+.modalProductInfo-container .modalProductInfo button:hover {
   background-color: var(--hovers);
 }
