@@ -2,10 +2,16 @@ import "./ModalRegister.css";
 import CloseIcon from "../../assets/close-icon.png";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
+import InputMask from "react-input-mask";
 
 export default function ModalRegister() {
-  const { showModalRegister, setShowModalRegister } =
-    useContext(GeneralContext);
+  const {
+    showModalRegister,
+    setShowModalRegister,
+    productRegister,
+    handleProductRegister,
+    handleCoinChange,
+  } = useContext(GeneralContext);
   function handleClick(e) {
     e.stopPropagation();
     setShowModalRegister({ ...showModalRegister, showModal: false });
@@ -31,20 +37,50 @@ export default function ModalRegister() {
               <option value="">Produto Único</option>
               <option value="">Kit</option>
             </select>
-            <label htmlFor="">Nome</label>
-            <input type="text" />
-            <label htmlFor="">Código de Barras</label>
-            <input type="number" />
-            <label htmlFor="">Descrição</label>
-            <input type="text" />
-            <label htmlFor="">Volume em ML</label>
-            <input type="number" />
-            <label htmlFor="">Valor</label>
-            <input type="number" />
+            <label htmlFor="productName">Nome</label>
+            <input
+              id="productName"
+              type="text"
+              name="name"
+              value={productRegister.name}
+              onChange={(event) => handleProductRegister(event)}
+            />
+            <label htmlFor="productBarCode">Código de Barras</label>
+            <InputMask
+              id="productBarCode"
+              mask="9'99999'99999"
+              name="bar_code"
+              value={productRegister.bar_code}
+              onChange={(event) => handleProductRegister(event)}
+            />
+            <label htmlFor="productDescription">Descrição</label>
+            <input
+              id="productDescription"
+              type="text"
+              name="description"
+              value={productRegister.description}
+              onChange={(event) => handleProductRegister(event)}
+            />
+            <label htmlFor="productVolume">Volume em ML</label>
+            <input
+              id="productVolume"
+              type="number"
+              name="volume"
+              value={productRegister.volume}
+              onChange={(event) => handleProductRegister(event)}
+            />
+            <label htmlFor="productPrice">Valor</label>
+            <input
+              type="text"
+              id="productPrice"
+              value={productRegister.formattedValue}
+              onChange={(event) => handleCoinChange(event)}
+            />
             <input
               type="submit"
               value="Registrar"
               className="button-register"
+              onClick={() => console.log(productRegister)}
             />
           </form>
         </div>

@@ -6,7 +6,6 @@ import RegisteredProducts from "../../modules/RegisteredProducts/RegisteredProdu
 import StockFlow from "../../modules/StockFlow/StockFlow";
 import ModalRegister from "../../modules/ModalRegisterFlow/ModalRegister";
 import ModalToInformations from "../../modules/ModalProductInfo/ModalToInformations";
-
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
 
