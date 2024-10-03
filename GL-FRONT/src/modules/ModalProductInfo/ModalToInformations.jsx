@@ -9,7 +9,8 @@ export default function ModalProductInfo() {
 
   return (
     <div className="modalProductInfo-container">
-      {toModalInformations.currentPage === "Produtos" ? (
+      {toModalInformations.currentPage === "Produtos" ||
+      toModalInformations.currentPage === "Estoque" ? (
         <div className="modalProductInfo">
           <img
             src={CloseIcon}

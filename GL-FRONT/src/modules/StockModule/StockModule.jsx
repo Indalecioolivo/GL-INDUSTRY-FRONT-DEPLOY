@@ -1,7 +1,10 @@
 import "./StockModule.css";
 import { db } from "../../services/db";
+import { GeneralContext } from "../../context/GeneralContext";
+import { useContext } from "react";
 
 export default function StockModule() {
+  const { handleOpenModalInformations } = useContext(GeneralContext);
   return (
     <section>
       <table>
@@ -17,7 +20,21 @@ export default function StockModule() {
         </thead>
         <tbody>
           {db.map((product) => (
-            <tr key={product.id}>
+            <tr
+              key={product.id}
+              onClick={() =>
+                handleOpenModalInformations(
+                  true,
+                  product.id,
+                  product.bar_code,
+                  product.name,
+                  product.description,
+                  product.volume,
+                  product.stock,
+                  product.price
+                )
+              }
+            >
               <td>{product.name}</td>
               <td>{product.volume}</td>
               <td>{product.stock}</td>

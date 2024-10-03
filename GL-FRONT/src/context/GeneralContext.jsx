@@ -13,7 +13,7 @@ export function GeneralContextProvider({ children }) {
   });
   const [toModalInformations, setToModalInformations] = useState({
     showModal: false,
-    currentPage: "",
+    currentPage: "Estoque",
     productInfos: {
       id: "",
       bar_code: "",
@@ -33,6 +33,15 @@ export function GeneralContextProvider({ children }) {
     },
   });
 
+  function setContentHome(content) {
+    setTitleContentHome(content);
+    setShowModalRegister({ ...showModalRegister, currentPage: content });
+    setToModalInformations({ ...toModalInformations, currentPage: content });
+    setStockHome(content === "Estoque");
+    setProductHome(content === "Produtos");
+    setFlowHome(content === "Fluxo Estoque");
+  }
+
   function handleOpenModalInformations(
     openClose,
     id,
@@ -46,7 +55,10 @@ export function GeneralContextProvider({ children }) {
     date,
     type
   ) {
-    if (toModalInformations.currentPage === "Produtos") {
+    if (
+      toModalInformations.currentPage === "Produtos" ||
+      toModalInformations.currentPage === "Estoque"
+    ) {
       if (!openClose) {
         setToModalInformations({
           ...toModalInformations,
@@ -105,15 +117,6 @@ export function GeneralContextProvider({ children }) {
         });
       }
     }
-  }
-
-  function setContentHome(content) {
-    setTitleContentHome(content);
-    setShowModalRegister({ ...showModalRegister, currentPage: content });
-    setToModalInformations({ ...toModalInformations, currentPage: content });
-    setStockHome(content === "Estoque");
-    setProductHome(content === "Produtos");
-    setFlowHome(content === "Fluxo Estoque");
   }
 
   return (

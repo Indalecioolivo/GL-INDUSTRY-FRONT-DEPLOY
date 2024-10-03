@@ -6,6 +6,7 @@ header {
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 h1 {
@@ -17,4 +18,64 @@ h1 {
   text-align: center;
   align-content: center;
   padding-left: 1rem;
+}
+
+header .user-things {
+  height: 6rem;
+  width: 13rem;
+
+  border-radius: 1rem;
+
+  margin-right: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+header .user-things .user-photo {
+  height: 5.5rem;
+
+  border: 2px solid var(--hovers);
+  border-radius: 50%;
+
+  display: block;
+}
+
+header .user-things strong {
+  height: 100%;
+  padding-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: large;
+  color: var(--secondary);
+}
+
+header .user-things strong img {
+  width: 1.5rem;
+}
+
+header .user-things .openedBox {
+  width: 13rem;
+  height: 4rem;
+  padding: 0.5rem 0 0 0.5rem;
+
+  background-color: var(--secondary);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+
+  position: absolute;
+  top: 7rem;
+
+  z-index: 1;
+}
+
+header .user-things .openedBox p {
+  font-weight: bold;
+  cursor: pointer;
 }
