@@ -21,6 +21,16 @@ export function GeneralContextProvider({ children }) {
     price: "",
     formattedValue: "",
   });
+
+  const [flowRegister, setFlowRegister] = useState({
+    id: "",
+    name: "",
+    amount: "",
+    date: "",
+    type: "",
+    bar_code: "",
+  });
+
   const [toModalInformations, setToModalInformations] = useState({
     showModal: false,
     currentPage: "Estoque",
@@ -42,33 +52,6 @@ export function GeneralContextProvider({ children }) {
       bar_code: "",
     },
   });
-
-  function handleProductRegister(event) {
-    const value = event.target.value;
-    setProductRegister({ ...productRegister, [event.target.name]: value });
-  }
-
-  function handleCoinChange(event) {
-    const inputCoin = event.target.value;
-    const coinValue = inputCoin.replace(/\D/g, "");
-    let formattedValue = "";
-
-    if (coinValue.length === 0) {
-      formattedValue = "";
-    } else {
-      const numericValue = Number(coinValue) / 100;
-
-      formattedValue = numericValue.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
-    }
-    setProductRegister({
-      ...productRegister,
-      formattedValue: formattedValue,
-      valor: coinValue,
-    });
-  }
 
   function setContentHome(content) {
     setTitleContentHome(content);
@@ -156,6 +139,38 @@ export function GeneralContextProvider({ children }) {
     }
   }
 
+  function handleProductRegister(event) {
+    const value = event.target.value;
+    setProductRegister({ ...productRegister, [event.target.name]: value });
+  }
+
+  function handleFlowRegister(event) {
+    const value = event.target.value;
+    setFlowRegister({ ...flowRegister, [event.target.name]: value });
+  }
+
+  function handleCoinChange(event) {
+    const inputCoin = event.target.value;
+    const coinValue = inputCoin.replace(/\D/g, "");
+    let formattedValue = "";
+
+    if (coinValue.length === 0) {
+      formattedValue = "";
+    } else {
+      const numericValue = Number(coinValue) / 100;
+
+      formattedValue = numericValue.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+    }
+    setProductRegister({
+      ...productRegister,
+      formattedValue: formattedValue,
+      valor: coinValue,
+    });
+  }
+
   return (
     <GeneralContext.Provider
       value={{
@@ -173,6 +188,9 @@ export function GeneralContextProvider({ children }) {
         setProductRegister,
         handleProductRegister,
         handleCoinChange,
+        flowRegister,
+        setFlowRegister,
+        handleFlowRegister,
       }}
     >
       {children}

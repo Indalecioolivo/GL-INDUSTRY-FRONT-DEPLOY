@@ -11,6 +11,9 @@ export default function ModalRegister() {
     productRegister,
     handleProductRegister,
     handleCoinChange,
+    flowRegister,
+    setFlowRegister,
+    handleFlowRegister,
   } = useContext(GeneralContext);
   function handleClick(e) {
     e.stopPropagation();
@@ -18,6 +21,7 @@ export default function ModalRegister() {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(flowRegister);
   }
 
   return (
@@ -94,19 +98,49 @@ export default function ModalRegister() {
               handleSubmit(e);
             }}
           >
-            <label htmlFor="">Tipo de Fluxo:</label>
-            <select name="" id="">
-              <option value="">Produção</option>
-              <option value="">Venda</option>
+            <label htmlFor="flowType">Tipo de Fluxo:</label>
+            <select
+              name="type"
+              id="flowType"
+              value={flowRegister.type}
+              onChange={(event) => handleFlowRegister(event)}
+            >
+              <option value="">Escolha Tipo de Fluxo</option>
+              <option value="entrada">Produção</option>
+              <option value="saida">Venda</option>
             </select>
-            <label htmlFor="">Código de Barras</label>
-            <input type="number" />
-            <label htmlFor="">Nome</label>
-            <input type="text" />
-            <label htmlFor="">Data</label>
-            <input type="date" />
-            <label htmlFor="">Quantidade</label>
-            <input type="number" />
+            <label htmlFor="flowProductBarCode">Código de Barras</label>
+            <InputMask
+              id="flowProductBarCode"
+              mask="9'99999'99999"
+              name="bar_code"
+              value={flowRegister.bar_code}
+              onChange={(event) => handleFlowRegister(event)}
+            />
+            <label htmlFor="flowProductName">Nome</label>
+            <input
+              type="text"
+              id="flowProductName"
+              name="name"
+              value={flowRegister.name}
+              onChange={(event) => handleFlowRegister(event)}
+            />
+            <label htmlFor="dateFlow">Data</label>
+            <input
+              type="date"
+              id="dateFlow"
+              name="date"
+              value={flowRegister.date}
+              onChange={(event) => handleFlowRegister(event)}
+            />
+            <label htmlFor="flowProductAmount">Quantidade</label>
+            <input
+              type="number"
+              id="flowProductAmount"
+              name="amount"
+              value={flowRegister.amount}
+              onChange={(event) => handleFlowRegister(event)}
+            />
             <input
               type="submit"
               value="Registrar"
