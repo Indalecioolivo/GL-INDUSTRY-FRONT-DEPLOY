@@ -144,9 +144,28 @@ export function GeneralContextProvider({ children }) {
     setProductRegister({ ...productRegister, [event.target.name]: value });
   }
 
+  const [errorsRegisterFlow, setErrorsRegisterFlow] = useState({
+    name: false,
+    amount: false,
+    date: false,
+    bar_code: false,
+    type: false,
+  });
+
   function handleFlowRegister(event) {
     const value = event.target.value;
     setFlowRegister({ ...flowRegister, [event.target.name]: value });
+    validateFields(event, value);
+  }
+
+  function validateFields(event, value) {
+    event.preventDefault();
+    if (value == "") {
+      setErrorsRegisterFlow({
+        ...errorsRegisterFlow,
+        [event.target.name]: true,
+      });
+    }
   }
 
   function handleCoinChange(event) {
@@ -191,6 +210,8 @@ export function GeneralContextProvider({ children }) {
         flowRegister,
         setFlowRegister,
         handleFlowRegister,
+        errorsRegisterFlow,
+        validateFields,
       }}
     >
       {children}

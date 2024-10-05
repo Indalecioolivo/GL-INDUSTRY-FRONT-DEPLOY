@@ -1,7 +1,7 @@
 import "./ModalRegister.css";
 import CloseIcon from "../../assets/close-icon.png";
 import { GeneralContext } from "../../context/GeneralContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import InputMask from "react-input-mask";
 
 export default function ModalRegister() {
@@ -14,6 +14,8 @@ export default function ModalRegister() {
     flowRegister,
     setFlowRegister,
     handleFlowRegister,
+    errorsRegisterFlow,
+    validateFields,
   } = useContext(GeneralContext);
   function handleClick(e) {
     e.stopPropagation();
@@ -21,7 +23,7 @@ export default function ModalRegister() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(flowRegister);
+    console.log(errorsRegisterFlow);
   }
 
   return (
@@ -82,9 +84,9 @@ export default function ModalRegister() {
             />
             <input
               type="submit"
-              value="Registrar"
+              value="Registrar Produto"
               className="button-register"
-              onClick={() => console.log(productRegister)}
+              // onClick={() => console.log(productRegister)}
             />
           </form>
         </div>
@@ -92,12 +94,7 @@ export default function ModalRegister() {
         <div className="modalRegister">
           <img src={CloseIcon} alt="" onClick={(e) => handleClick(e)} />
           <h2>Registrar Fluxo</h2>
-          <form
-            action=""
-            onSubmit={(e) => {
-              handleSubmit(e);
-            }}
-          >
+          <form action="" onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="flowType">Tipo de Fluxo:</label>
             <select
               name="type"
@@ -124,6 +121,7 @@ export default function ModalRegister() {
               name="name"
               value={flowRegister.name}
               onChange={(event) => handleFlowRegister(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             />
             <label htmlFor="dateFlow">Data</label>
             <input
@@ -143,8 +141,9 @@ export default function ModalRegister() {
             />
             <input
               type="submit"
-              value="Registrar"
+              value="Registrar Fluxo"
               className="button-register"
+              // onClick={(e) => validateFields(e, flowRegister)}
             />
           </form>
         </div>
