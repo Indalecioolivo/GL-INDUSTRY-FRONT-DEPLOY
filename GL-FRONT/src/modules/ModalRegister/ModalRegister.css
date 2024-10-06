@@ -41,12 +41,17 @@
 .modalRegister-container .modalRegister h2 {
   height: 2.5rem;
   text-align: center;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
 }
 
 .modalRegister-container .modalRegister form {
   height: calc(45rem - 8.5rem);
   padding-left: 3rem;
+}
+
+.modalRegister-container .modalRegister form label {
+  margin-top: 1rem;
+  display: inline-block;
 }
 
 .modalRegister-container .modalRegister form select,
@@ -56,17 +61,21 @@
 
   display: block;
 
-  margin-bottom: 1rem;
   padding-left: 0.5rem;
 
   font-size: medium;
+}
+
+.modalRegister-container .modalRegister p {
+  color: red;
+  font-size: small;
 }
 
 .modalRegister-container .modalRegister form .button-register {
   width: 15rem;
   height: 3.5rem;
 
-  margin: 5rem 0 0 9.5rem;
+  margin: 2rem 0 0 9.5rem;
 
   border: none;
   border-radius: 0.5rem;

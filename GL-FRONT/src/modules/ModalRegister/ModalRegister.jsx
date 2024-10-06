@@ -2,7 +2,6 @@ import "./ModalRegister.css";
 import CloseIcon from "../../assets/close-icon.png";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext, useState } from "react";
-import InputMask from "react-input-mask";
 
 export default function ModalRegister() {
   const {
@@ -16,6 +15,7 @@ export default function ModalRegister() {
     handleFlowRegister,
     errorsRegisterFlow,
     validateFields,
+    errorsRegisterProduct,
   } = useContext(GeneralContext);
   function handleClick(e) {
     e.stopPropagation();
@@ -23,7 +23,6 @@ export default function ModalRegister() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(errorsRegisterFlow);
   }
 
   return (
@@ -50,15 +49,19 @@ export default function ModalRegister() {
               name="name"
               value={productRegister.name}
               onChange={(event) => handleProductRegister(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             />
+            <p>{errorsRegisterProduct.name ? "*Campo Obrigatório" : ""}</p>
             <label htmlFor="productBarCode">Código de Barras</label>
-            <InputMask
+            <input
               id="productBarCode"
-              mask="9'99999'99999"
+              type="text"
               name="bar_code"
               value={productRegister.bar_code}
               onChange={(event) => handleProductRegister(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             />
+            <p>{errorsRegisterProduct.bar_code ? "*Campo Obrigatório" : ""}</p>
             <label htmlFor="productDescription">Descrição</label>
             <input
               id="productDescription"
@@ -66,7 +69,11 @@ export default function ModalRegister() {
               name="description"
               value={productRegister.description}
               onChange={(event) => handleProductRegister(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             />
+            <p>
+              {errorsRegisterProduct.description ? "*Campo Obrigatório" : ""}
+            </p>
             <label htmlFor="productVolume">Volume em ML</label>
             <input
               id="productVolume"
@@ -74,14 +81,19 @@ export default function ModalRegister() {
               name="volume"
               value={productRegister.volume}
               onChange={(event) => handleProductRegister(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             />
+            <p>{errorsRegisterProduct.volume ? "*Campo Obrigatório" : ""}</p>
             <label htmlFor="productPrice">Valor</label>
             <input
               type="text"
               id="productPrice"
+              name="price"
               value={productRegister.formattedValue}
               onChange={(event) => handleCoinChange(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             />
+            <p>{errorsRegisterProduct.price ? "*Campo Obrigatório" : ""}</p>
             <input
               type="submit"
               value="Registrar Produto"
@@ -101,19 +113,24 @@ export default function ModalRegister() {
               id="flowType"
               value={flowRegister.type}
               onChange={(event) => handleFlowRegister(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             >
               <option value="">Escolha Tipo de Fluxo</option>
               <option value="entrada">Produção</option>
               <option value="saida">Venda</option>
             </select>
+            {errorsRegisterFlow.type ? <p>*Campo Obrigatório</p> : ""}
             <label htmlFor="flowProductBarCode">Código de Barras</label>
-            <InputMask
+            <input
               id="flowProductBarCode"
-              mask="9'99999'99999"
               name="bar_code"
+              type="text"
+              maxLength={13}
               value={flowRegister.bar_code}
               onChange={(event) => handleFlowRegister(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             />
+            {errorsRegisterFlow.bar_code ? <p>*Campo Obrigatório</p> : ""}
             <label htmlFor="flowProductName">Nome</label>
             <input
               type="text"
@@ -123,6 +140,7 @@ export default function ModalRegister() {
               onChange={(event) => handleFlowRegister(event)}
               onBlur={(event) => validateFields(event, event.target.value)}
             />
+            {errorsRegisterFlow.name ? <p>*Campo Obrigatório</p> : ""}
             <label htmlFor="dateFlow">Data</label>
             <input
               type="date"
@@ -130,7 +148,9 @@ export default function ModalRegister() {
               name="date"
               value={flowRegister.date}
               onChange={(event) => handleFlowRegister(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             />
+            {errorsRegisterFlow.date ? <p>*Campo Obrigatório</p> : ""}
             <label htmlFor="flowProductAmount">Quantidade</label>
             <input
               type="number"
@@ -138,7 +158,9 @@ export default function ModalRegister() {
               name="amount"
               value={flowRegister.amount}
               onChange={(event) => handleFlowRegister(event)}
+              onBlur={(event) => validateFields(event, event.target.value)}
             />
+            {errorsRegisterFlow.amount ? <p>*Campo Obrigatório</p> : ""}
             <input
               type="submit"
               value="Registrar Fluxo"

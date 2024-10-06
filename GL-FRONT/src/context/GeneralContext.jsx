@@ -21,7 +21,6 @@ export function GeneralContextProvider({ children }) {
     price: "",
     formattedValue: "",
   });
-
   const [flowRegister, setFlowRegister] = useState({
     id: "",
     name: "",
@@ -30,7 +29,6 @@ export function GeneralContextProvider({ children }) {
     type: "",
     bar_code: "",
   });
-
   const [toModalInformations, setToModalInformations] = useState({
     showModal: false,
     currentPage: "Estoque",
@@ -51,6 +49,21 @@ export function GeneralContextProvider({ children }) {
       type: "",
       bar_code: "",
     },
+  });
+  const [errorsRegisterFlow, setErrorsRegisterFlow] = useState({
+    name: false,
+    amount: false,
+    date: false,
+    bar_code: false,
+    type: false,
+  });
+
+  const [errorsRegisterProduct, setErrorsRegisterProduct] = useState({
+    bar_code: false,
+    name: false,
+    description: false,
+    volume: false,
+    price: false,
   });
 
   function setContentHome(content) {
@@ -144,14 +157,6 @@ export function GeneralContextProvider({ children }) {
     setProductRegister({ ...productRegister, [event.target.name]: value });
   }
 
-  const [errorsRegisterFlow, setErrorsRegisterFlow] = useState({
-    name: false,
-    amount: false,
-    date: false,
-    bar_code: false,
-    type: false,
-  });
-
   function handleFlowRegister(event) {
     const value = event.target.value;
     setFlowRegister({ ...flowRegister, [event.target.name]: value });
@@ -160,11 +165,58 @@ export function GeneralContextProvider({ children }) {
 
   function validateFields(event, value) {
     event.preventDefault();
-    if (value == "") {
-      setErrorsRegisterFlow({
-        ...errorsRegisterFlow,
-        [event.target.name]: true,
-      });
+    if (showModalRegister.currentPage === "Produtos") {
+      if (event.target.name == "bar_code") {
+        if (value == "" || value.length != 13) {
+          setErrorsRegisterProduct({
+            ...errorsRegisterProduct,
+            [event.target.name]: true,
+          });
+        } else {
+          setErrorsRegisterProduct({
+            ...errorsRegisterProduct,
+            [event.target.name]: false,
+          });
+        }
+      } else {
+        if (value == "") {
+          setErrorsRegisterProduct({
+            ...errorsRegisterProduct,
+            [event.target.name]: true,
+          });
+        } else {
+          setErrorsRegisterProduct({
+            ...errorsRegisterProduct,
+            [event.target.name]: false,
+          });
+        }
+      }
+    } else {
+      if (event.target.name == "bar_code") {
+        if (value == "" || value.length != 13) {
+          setErrorsRegisterFlow({
+            ...errorsRegisterFlow,
+            [event.target.name]: true,
+          });
+        } else {
+          setErrorsRegisterFlow({
+            ...errorsRegisterFlow,
+            [event.target.name]: false,
+          });
+        }
+      } else {
+        if (value == "") {
+          setErrorsRegisterFlow({
+            ...errorsRegisterFlow,
+            [event.target.name]: true,
+          });
+        } else {
+          setErrorsRegisterFlow({
+            ...errorsRegisterFlow,
+            [event.target.name]: false,
+          });
+        }
+      }
     }
   }
 
@@ -212,6 +264,7 @@ export function GeneralContextProvider({ children }) {
         handleFlowRegister,
         errorsRegisterFlow,
         validateFields,
+        errorsRegisterProduct,
       }}
     >
       {children}

@@ -4,7 +4,7 @@ import NavBar from "../../modules/NavBar/NavBar";
 import StockModule from "../../modules/StockModule/StockModule";
 import RegisteredProducts from "../../modules/RegisteredProducts/RegisteredProducts";
 import StockFlow from "../../modules/StockFlow/StockFlow";
-import ModalRegister from "../../modules/ModalRegisterFlow/ModalRegister";
+import ModalRegister from "../../modules/ModalRegister/ModalRegister";
 import ModalToInformations from "../../modules/ModalProductInfo/ModalToInformations";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
