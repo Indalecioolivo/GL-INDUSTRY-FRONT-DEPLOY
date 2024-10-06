@@ -65,7 +65,7 @@ header .user-things .openedBox {
   height: 4rem;
   padding: 0.5rem 0 0 0.5rem;
 
-  background-color: var(--secondary);
+  background-color: #fff;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 
