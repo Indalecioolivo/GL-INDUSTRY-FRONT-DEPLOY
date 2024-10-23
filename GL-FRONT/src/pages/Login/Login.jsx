@@ -1,7 +1,14 @@
 import "./Login.css";
 import Logomarca from "../../assets/lm-logomarca.png";
+import api from "../../services/api";
 
 export default function Login() {
+  async function handleTest() {
+    try {
+      const result = await api.get("/users");
+      console.log(result);
+    } catch (error) {}
+  }
   return (
     <div className="login-container">
       <section>
@@ -26,6 +33,7 @@ export default function Login() {
             Login
           </button>
         </form>
+        <button onClick={() => handleTest()}>TESTE</button>
       </section>
     </div>
   );
