@@ -1,13 +1,22 @@
 import "./StockFlow.css";
 import { flowdb } from "../../services/db";
-import SearchModule from "../../modules/SearchModule/SearchModule";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
+import SearchModule from "../../modules/SearchModule/SearchModule";
+import ModalToInformations from "../../modules/ModalToInformations/ModalToInformations";
+import ModalRegister from "../../modules/ModalRegister/ModalRegister";
 
 export default function StockFlow() {
-  const { handleOpenModalInformations } = useContext(GeneralContext);
+  const {
+    handleOpenModalInformations,
+    showModalRegister,
+    toModalInformations,
+  } = useContext(GeneralContext);
+
   return (
     <section>
+      {showModalRegister.showModal ? <ModalRegister /> : ""}
+      {toModalInformations.showModal ? <ModalToInformations /> : ""}
       <SearchModule />
       <table>
         <thead>

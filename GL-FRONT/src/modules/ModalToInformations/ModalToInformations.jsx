@@ -42,7 +42,7 @@ export default function ModalProductInfo() {
           <p>{toModalInformations.flowInfos.amount}</p>
           <strong>Data</strong>
           <p>{toModalInformations.flowInfos.date}</p>
-          <strong>Fluxo de {toModalInformations.flowInfos.type}</strong>
+          <strong>Tipo de Fluxo</strong>
           <p>{toModalInformations.flowInfos.type}</p>
           <strong>Código de Barras</strong>
           <p>{toModalInformations.flowInfos.bar_code}</p>

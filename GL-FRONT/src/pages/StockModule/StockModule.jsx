@@ -2,11 +2,14 @@ import "./StockModule.css";
 import { db } from "../../services/db";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
+import ModalToInformations from "../../modules/ModalToInformations/ModalToInformations";
 
 export default function StockModule() {
-  const { handleOpenModalInformations } = useContext(GeneralContext);
+  const { handleOpenModalInformations, toModalInformations } =
+    useContext(GeneralContext);
   return (
     <section>
+      {toModalInformations.showModal ? <ModalToInformations /> : ""}
       <table>
         <thead>
           <tr>
