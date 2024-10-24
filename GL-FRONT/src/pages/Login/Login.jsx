@@ -1,17 +1,12 @@
 import "./Login.css";
+import { useState } from "react";
+import { setItem } from "../../utils/storage";
 import Logomarca from "../../assets/lm-logomarca.png";
 import api from "../../services/api";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  async function handleTest() {
-    try {
-      const result = await api.get("/users");
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     userEmail: "",
     userPassword: "",
@@ -20,33 +15,53 @@ export default function Login() {
   function handleChange(e) {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const result = await api.post("/login", { credentials });
+      if (result.status === 200) {
+        const { token } = result.data;
+        setItem("tokenGL", token);
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.status === 404) {
+        return alert(error.response.data.message);
+      } else {
+        return alert("Algo deu errado.");
+      }
+    }
+  }
+
   return (
     <div className="login-container">
       <section>
         <img src={Logomarca} alt="" />
-        <form action="">
+        <form action="" onSubmit={(e) => handleSubmit(e)}>
           <h1>Login</h1>
           <label htmlFor="user-name">Usuario: </label>
           <input
             type="text"
-            id="user-name"
+            id="userName"
+            name="userEmail"
             placeholder="Digite seu email de Usuário"
-            value={credentials.userEmail}
+            onChange={(e) => handleChange(e)}
             required
           />
           <label htmlFor="pass">Senha: </label>
           <input
             type="password"
-            id="pass"
+            id="userPassword"
+            name="userPassword"
             placeholder="Digite sua senha"
-            value={credentials.userPassword}
+            onChange={(e) => handleChange(e)}
             required
           />
           <button type="submit" id="button-submit">
             Login
           </button>
         </form>
-        <button onClick={() => handleTest()}>TESTE</button>
       </section>
     </div>
   );
