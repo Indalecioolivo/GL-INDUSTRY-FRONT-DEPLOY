@@ -1,0 +1,12 @@
+.products-container {
+}
+
+.products-container .products-area {
+  height: auto;
+
+  margin: 0 10rem 0 10rem;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
