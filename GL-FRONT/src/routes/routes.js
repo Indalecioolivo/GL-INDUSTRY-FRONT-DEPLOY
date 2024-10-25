@@ -2,8 +2,6 @@ import { getItem } from "../utils/storage";
 
 export function PrivateRoutes({ children }) {
   const token = getItem("tokenGL");
-  console.log(token);
-
   return token ? children : (location.pathname = "/login");
 }
 
