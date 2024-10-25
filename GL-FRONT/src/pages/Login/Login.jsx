@@ -1,9 +1,9 @@
 import "./Login.css";
 import { useState } from "react";
 import { setItem } from "../../utils/storage";
+import { useNavigate } from "react-router-dom";
 import Logomarca from "../../assets/lm-logomarca.png";
 import api from "../../services/api";
-import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
