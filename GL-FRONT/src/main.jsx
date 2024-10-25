@@ -9,30 +9,51 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
 import StockModule from "./pages/StockModule/StockModule.jsx";
 import RegisteredProducts from "./pages/RegisteredProducts/RegisteredProducts.jsx";
 import StockFlow from "./pages/StockFlow/StockFlow.jsx";
+import { PrivateRoutes, UnPrivateRoutes } from "./routes/routes.js";
 
 const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
     path: "/",
-    element: <App />,
+    element: (
+      <PrivateRoutes>
+        <App />
+      </PrivateRoutes>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <StockModule />,
+        element: (
+          <PrivateRoutes>
+            <StockModule />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/products",
-        element: <RegisteredProducts />,
+        element: (
+          <PrivateRoutes>
+            <RegisteredProducts />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/flows",
-        element: <StockFlow />,
+        element: (
+          <PrivateRoutes>
+            <StockFlow />
+          </PrivateRoutes>
+        ),
       },
     ],
+  },
+  {
+    path: "/login",
+    element: (
+      <UnPrivateRoutes>
+        <Login />
+      </UnPrivateRoutes>
+    ),
   },
 ]);
 
