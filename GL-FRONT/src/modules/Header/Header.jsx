@@ -17,6 +17,7 @@ export default function Header() {
   }
   function handleLogout() {
     removeItem("tokenGL");
+    removeItem("userEmail");
     return navigate("/login");
   }
 

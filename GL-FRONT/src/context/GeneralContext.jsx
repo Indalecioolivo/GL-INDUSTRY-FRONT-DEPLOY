@@ -1,9 +1,14 @@
 import { createContext, useState } from "react";
 import api from "../services/api";
+import { getItem } from "../utils/storage";
 
 export const GeneralContext = createContext();
 
 export function GeneralContextProvider({ children }) {
+  const [credentials, setCredentials] = useState({
+    userEmail: "",
+    userPassword: "",
+  });
   const [userData, setUserData] = useState({});
   const [titleContentHome, setTitleContentHome] = useState("Estoque");
   const [stockHome, setStockHome] = useState(true);
@@ -244,6 +249,16 @@ export function GeneralContextProvider({ children }) {
     });
   }
 
+  async function getUserData() {
+    const userEmail = getItem("userEmail");
+    const result = await api.get(`/users/findUser/${userEmail}`);
+
+    if (result.status === 200) {
+      const { data } = result;
+      setUserData({ ...data });
+    }
+  }
+
   return (
     <GeneralContext.Provider
       value={{
@@ -267,8 +282,11 @@ export function GeneralContextProvider({ children }) {
         errorsRegisterFlow,
         validateFields,
         errorsRegisterProduct,
+        credentials,
+        setCredentials,
         userData,
         setUserData,
+        getUserData,
       }}
     >
       {children}

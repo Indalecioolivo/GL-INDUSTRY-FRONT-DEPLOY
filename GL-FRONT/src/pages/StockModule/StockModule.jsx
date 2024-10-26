@@ -5,8 +5,9 @@ import { useContext } from "react";
 import ModalToInformations from "../../modules/ModalToInformations/ModalToInformations";
 
 export default function StockModule() {
-  const { handleOpenModalInformations, toModalInformations } =
+  const { handleOpenModalInformations, toModalInformations, userData } =
     useContext(GeneralContext);
+
   return (
     <section>
       {toModalInformations.showModal ? <ModalToInformations /> : ""}
