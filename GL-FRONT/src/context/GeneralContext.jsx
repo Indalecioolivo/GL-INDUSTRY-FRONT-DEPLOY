@@ -4,6 +4,7 @@ import api from "../services/api";
 export const GeneralContext = createContext();
 
 export function GeneralContextProvider({ children }) {
+  const [userData, setUserData] = useState({});
   const [titleContentHome, setTitleContentHome] = useState("Estoque");
   const [stockHome, setStockHome] = useState(true);
   const [productHome, setProductHome] = useState(false);
@@ -266,6 +267,8 @@ export function GeneralContextProvider({ children }) {
         errorsRegisterFlow,
         validateFields,
         errorsRegisterProduct,
+        userData,
+        setUserData,
       }}
     >
       {children}

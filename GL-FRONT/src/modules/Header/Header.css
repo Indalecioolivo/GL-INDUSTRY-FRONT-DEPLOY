@@ -22,7 +22,7 @@ h1 {
 
 header .user-things {
   height: 6rem;
-  width: 13rem;
+  width: 15rem;
 
   border-radius: 1rem;
 
@@ -44,6 +44,7 @@ header .user-things .user-photo {
 
 header .user-things strong {
   height: 100%;
+
   padding-top: 1rem;
 
   display: flex;
@@ -54,6 +55,9 @@ header .user-things strong {
   cursor: pointer;
   font-size: large;
   color: var(--secondary);
+
+  text-wrap: nowrap;
+  font-size: medium;
 }
 
 header .user-things strong img {

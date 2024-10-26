@@ -1,11 +1,13 @@
 import "./Login.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { setItem } from "../../utils/storage";
 import { useNavigate } from "react-router-dom";
+import { GeneralContext } from "../../context/GeneralContext";
 import Logomarca from "../../assets/lm-logomarca.png";
 import api from "../../services/api";
 
 export default function Login() {
+  const { setUserData } = useContext(GeneralContext);
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     userEmail: "",
@@ -21,8 +23,10 @@ export default function Login() {
     try {
       const result = await api.post("/login", { credentials });
       if (result.status === 200) {
-        const { token } = result.data;
+        const { token, id, name, last_name } = result.data;
         setItem("tokenGL", token);
+        setUserData({ id, name, last_name });
+
         navigate("/");
       }
     } catch (error) {
