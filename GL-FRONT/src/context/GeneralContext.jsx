@@ -9,6 +9,7 @@ export function GeneralContextProvider({ children }) {
     userEmail: "",
     userPassword: "",
   });
+  const [productsData, setProductsData] = useState([]);
   const [userData, setUserData] = useState({});
   const [titleContentHome, setTitleContentHome] = useState("Estoque");
   const [stockHome, setStockHome] = useState(true);
@@ -258,6 +259,13 @@ export function GeneralContextProvider({ children }) {
       setUserData({ ...data });
     }
   }
+  async function getAllProducts() {
+    const result = await api.get("/products");
+    if (result.status === 200) {
+      const { data } = result;
+      setProductsData([...data]);
+    }
+  }
 
   return (
     <GeneralContext.Provider
@@ -287,6 +295,8 @@ export function GeneralContextProvider({ children }) {
         userData,
         setUserData,
         getUserData,
+        productsData,
+        getAllProducts,
       }}
     >
       {children}

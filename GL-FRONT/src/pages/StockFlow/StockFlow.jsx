@@ -14,7 +14,7 @@ export default function StockFlow() {
   } = useContext(GeneralContext);
 
   return (
-    <section>
+    <section className="stock-flow-container">
       {showModalRegister.showModal ? <ModalRegister /> : ""}
       {toModalInformations.showModal ? <ModalToInformations /> : ""}
       <SearchModule />

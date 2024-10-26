@@ -5,11 +5,11 @@ import { useContext } from "react";
 import ModalToInformations from "../../modules/ModalToInformations/ModalToInformations";
 
 export default function StockModule() {
-  const { handleOpenModalInformations, toModalInformations, userData } =
+  const { handleOpenModalInformations, toModalInformations, productsData } =
     useContext(GeneralContext);
 
   return (
-    <section>
+    <section className="stock-module-container">
       {toModalInformations.showModal ? <ModalToInformations /> : ""}
       <table>
         <thead>
@@ -23,7 +23,7 @@ export default function StockModule() {
           </tr>
         </thead>
         <tbody>
-          {db.map((product) => (
+          {productsData.map((product) => (
             <tr
               key={product.id}
               onClick={() =>

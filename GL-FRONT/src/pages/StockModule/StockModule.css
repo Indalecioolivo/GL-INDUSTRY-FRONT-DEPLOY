@@ -1,48 +1,85 @@
-section {
+.stock-module-container {
   height: calc(100vh - 7rem);
   width: calc(100vw - 7rem);
   overflow-y: scroll;
   padding: 2px 0 0 2px;
 }
 
-section table {
+.stock-module-container table {
   width: 100%;
   height: 100%;
-  border: 3px solid var(--hovers);
+  border: 2px solid var(--hovers);
 
   border-collapse: collapse;
 }
 
-section table thead tr th {
+.stock-module-container table thead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stock-module-container table thead tr {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.stock-module-container table thead tr th {
   height: 4rem;
-  width: 8rem;
+  width: 20%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   position: sticky;
   top: 0px;
 
   background-color: var(--primary);
   color: var(--secondary);
-  border: 3px solid var(--hovers);
+  border: 1px solid var(--hovers);
 
   font-size: 1.5rem;
 }
 
-section table tbody tr:hover {
+.stock-module-container table tbody {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stock-module-container table tbody tr {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.stock-module-container table tbody tr:hover {
   background-color: var(--primary);
 }
 
-section table tbody td {
+.stock-module-container table tbody tr td {
   height: 4rem;
+  width: 20%;
   padding: 8px;
 
   border-bottom: 1px solid var(--hovers);
 
-  text-align: center;
-  text-justify: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
   font-weight: 600;
 }
 
-section table tbody td:hover {
+.stock-module-container table tbody tr td:hover {
   background-color: var(--hovers);
   color: var(--secondary);
 }

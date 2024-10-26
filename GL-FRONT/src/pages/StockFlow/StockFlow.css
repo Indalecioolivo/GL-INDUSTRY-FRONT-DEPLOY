@@ -1,4 +1,4 @@
-section {
+.stock-flow-container {
   height: calc(100vh - 7rem);
   width: calc(100vw - 7rem);
   padding: 2px 0 0 2px;
@@ -6,7 +6,7 @@ section {
   overflow-y: scroll;
 }
 
-section table {
+.stock-flow-container table {
   width: 100%;
   height: calc(100% - 7rem);
 
@@ -15,7 +15,7 @@ section table {
   border-collapse: collapse;
 }
 
-section table thead th {
+.stock-flow-container table thead th {
   height: 4rem;
   width: 8rem;
 
@@ -24,16 +24,16 @@ section table thead th {
 
   background-color: var(--primary);
   color: var(--secondary);
-  border: 2px solid var(--hovers);
+  border: 1px solid var(--hovers);
 
   font-size: 1.5rem;
 }
 
-section table tbody tr:hover {
+.stock-flow-container table tbody tr:hover {
   background-color: var(--primary);
 }
 
-section table tbody td {
+.stock-flow-container table tbody td {
   height: 4rem;
   padding: 8px;
 
@@ -44,7 +44,7 @@ section table tbody td {
   font-weight: 600;
 }
 
-section table tbody td:hover {
+.stock-flow-container table tbody td:hover {
   background-color: var(--hovers);
   color: var(--secondary);
 }
