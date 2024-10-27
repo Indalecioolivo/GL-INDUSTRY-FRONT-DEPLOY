@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import api from "../services/api";
-import { getItem } from "../utils/storage";
+import { getItem, removeItem } from "../utils/storage";
 
 export const GeneralContext = createContext();
 
@@ -250,6 +250,10 @@ export function GeneralContextProvider({ children }) {
       valor: coinValue,
     });
   }
+  function resetApplication() {
+    removeItem("tokenGL");
+    removeItem("userEmail");
+  }
 
   async function getUserData() {
     const userEmail = getItem("userEmail");
@@ -309,6 +313,7 @@ export function GeneralContextProvider({ children }) {
         getAllProducts,
         flowData,
         getAllFlows,
+        resetApplication,
       }}
     >
       {children}

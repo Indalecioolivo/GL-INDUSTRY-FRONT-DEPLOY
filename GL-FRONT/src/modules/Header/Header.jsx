@@ -8,7 +8,8 @@ import ExpandMoreIcon from "../../assets/user-expandm-icon.png";
 import ExpandLessIcon from "../../assets/user-expandl-icon.png";
 
 export default function Header() {
-  const { titleContentHome, userData } = useContext(GeneralContext);
+  const { titleContentHome, userData, resetApplication } =
+    useContext(GeneralContext);
   const [hiddenOpenedBox, setHiddenOpenedBox] = useState(true);
   const navigate = useNavigate();
   const { id, name, last_name } = userData;
@@ -16,8 +17,7 @@ export default function Header() {
     hiddenOpenedBox ? setHiddenOpenedBox(false) : setHiddenOpenedBox(true);
   }
   function handleLogout() {
-    removeItem("tokenGL");
-    removeItem("userEmail");
+    resetApplication();
     return navigate("/login");
   }
 
