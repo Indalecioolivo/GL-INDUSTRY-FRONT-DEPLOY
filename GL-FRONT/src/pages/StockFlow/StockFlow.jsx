@@ -11,6 +11,7 @@ export default function StockFlow() {
     handleOpenModalInformations,
     showModalRegister,
     toModalInformations,
+    flowData,
   } = useContext(GeneralContext);
 
   return (
@@ -28,14 +29,14 @@ export default function StockFlow() {
           </tr>
         </thead>
         <tbody>
-          {flowdb.map((fluxo) => (
+          {flowData.map((fluxo) => (
             <tr
               key={fluxo.id}
               onClick={() =>
                 handleOpenModalInformations(
                   true,
                   fluxo.id,
-                  fluxo.bar_code,
+                  fluxo.product_bar_code,
                   fluxo.name,
                   "",
                   "",
@@ -47,7 +48,7 @@ export default function StockFlow() {
                 )
               }
             >
-              <td>{fluxo.name}</td>
+              <td>{fluxo.product_bar_code}</td>
               <td>{fluxo.type}</td>
               <td>{fluxo.amount}</td>
               <td>{fluxo.date}</td>

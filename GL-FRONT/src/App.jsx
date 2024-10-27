@@ -6,10 +6,12 @@ import Header from "./modules/Header/Header";
 import NavBar from "./modules/NavBar/NavBar";
 
 function App() {
-  const { getUserData, getAllProducts } = useContext(GeneralContext);
+  const { getUserData, getAllProducts, getAllFlows } =
+    useContext(GeneralContext);
   useEffect(() => {
     getUserData();
     getAllProducts();
+    getAllFlows();
   }, []);
   return (
     <div className="home-container">
