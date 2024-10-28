@@ -35,10 +35,7 @@ export function GeneralContextProvider({ children }) {
     formattedValue: "",
   });
   const [flowRegister, setFlowRegister] = useState({
-    id: "",
-    name: "",
-    amount: "",
-    date: "",
+    amount: 0,
     type: "",
     bar_code: "",
   });
@@ -173,7 +170,6 @@ export function GeneralContextProvider({ children }) {
   function handleFlowRegister(event) {
     const value = event.target.value;
     setFlowRegister({ ...flowRegister, [event.target.name]: value });
-    validateFields(event, value);
   }
 
   function validateFields(event, value) {
@@ -325,6 +321,39 @@ export function GeneralContextProvider({ children }) {
       }
     }
   }
+  async function postNewFlow() {
+    try {
+      const { bar_code, type, amount } = flowRegister;
+      const result = await api.post("/flows", {
+        bar_code,
+        type,
+        amount: Number(amount),
+      });
+
+      if (result.status === 201) {
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+        setFlowRegister({
+          amount: 0,
+          type: "",
+          bar_code: "",
+        });
+        await getAllFlows();
+        await getAllProducts();
+      }
+    } catch (error) {
+      if (error.status === 400) {
+        setShowModalAlert({
+          showModal: true,
+          message: error.response.data.message,
+          status: error.response.status,
+        });
+      }
+    }
+  }
 
   return (
     <GeneralContext.Provider
@@ -362,6 +391,7 @@ export function GeneralContextProvider({ children }) {
         postNewProduct,
         showModalAlert,
         setShowModalAlert,
+        postNewFlow,
       }}
     >
       {children}
