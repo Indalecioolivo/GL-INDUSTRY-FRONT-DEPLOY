@@ -20,14 +20,18 @@ export function GeneralContextProvider({ children }) {
     showModal: false,
     currentPage: "",
   });
+  const [showModalAlert, setShowModalAlert] = useState({
+    showModal: false,
+    message: "",
+    status: "",
+  });
   const [productRegister, setProductRegister] = useState({
-    id: "",
     bar_code: "",
     name: "",
     description: "",
-    volume: "",
-    stock: "",
-    price: "",
+    volume: 0,
+    stock: 0,
+    price: 0,
     formattedValue: "",
   });
   const [flowRegister, setFlowRegister] = useState({
@@ -200,7 +204,8 @@ export function GeneralContextProvider({ children }) {
           });
         }
       }
-    } else {
+    }
+    if (showModalRegister.currentPage === "Fluxo Estoque") {
       if (event.target.name == "bar_code") {
         if (value == "" || value.length != 13) {
           setErrorsRegisterFlow({
@@ -280,6 +285,46 @@ export function GeneralContextProvider({ children }) {
       console.log(error);
     }
   }
+  async function postNewProduct() {
+    try {
+      const { bar_code, name, description, volume, stock, price } =
+        productRegister;
+
+      const result = await api.post("/products", {
+        bar_code,
+        name,
+        description,
+        stock,
+        price,
+        volume: Number(volume),
+      });
+      if (result.status === 201) {
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+        setProductRegister({
+          bar_code: "",
+          name: "",
+          description: "",
+          volume: 0,
+          stock: 0,
+          price: 0,
+          formattedValue: "",
+        });
+        await getAllProducts();
+      }
+    } catch (error) {
+      if (error.status === 400) {
+        setShowModalAlert({
+          showModal: true,
+          message: error.response.data.message,
+          status: error.response.status,
+        });
+      }
+    }
+  }
 
   return (
     <GeneralContext.Provider
@@ -314,6 +359,9 @@ export function GeneralContextProvider({ children }) {
         flowData,
         getAllFlows,
         resetApplication,
+        postNewProduct,
+        showModalAlert,
+        setShowModalAlert,
       }}
     >
       {children}

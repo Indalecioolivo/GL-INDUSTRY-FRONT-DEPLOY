@@ -1,7 +1,8 @@
 import "./ModalRegister.css";
-import CloseIcon from "../../assets/close-icon.png";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext, useState } from "react";
+import CloseIcon from "../../assets/close-icon.png";
+import ModalAlert from "../ModalAlert/ModalAlert";
 
 export default function ModalRegister() {
   const {
@@ -16,20 +17,24 @@ export default function ModalRegister() {
     errorsRegisterFlow,
     validateFields,
     errorsRegisterProduct,
+    postNewProduct,
+    showModalAlert,
   } = useContext(GeneralContext);
-  function handleClick(e) {
+  function handleCloseModal(e) {
     e.stopPropagation();
     setShowModalRegister({ ...showModalRegister, showModal: false });
   }
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    await postNewProduct();
   }
 
   return (
     <div className="modalRegister-container">
+      {showModalAlert.showModal ? <ModalAlert /> : ""}
       {showModalRegister.currentPage === "Produtos" ? (
         <div className="modalRegister">
-          <img src={CloseIcon} alt="" onClick={(e) => handleClick(e)} />
+          <img src={CloseIcon} alt="" onClick={(e) => handleCloseModal(e)} />
           <h2>Registrar Produto</h2>
           <form
             action=""
@@ -57,6 +62,7 @@ export default function ModalRegister() {
               id="productBarCode"
               type="text"
               name="bar_code"
+              maxLength={13}
               value={productRegister.bar_code}
               onChange={(event) => handleProductRegister(event)}
               onBlur={(event) => validateFields(event, event.target.value)}
@@ -104,7 +110,7 @@ export default function ModalRegister() {
         </div>
       ) : (
         <div className="modalRegister">
-          <img src={CloseIcon} alt="" onClick={(e) => handleClick(e)} />
+          <img src={CloseIcon} alt="" onClick={(e) => handleCloseModal(e)} />
           <h2>Registrar Fluxo</h2>
           <form action="" onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="flowType">Tipo de Fluxo:</label>

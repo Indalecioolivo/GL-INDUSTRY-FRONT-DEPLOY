@@ -1,0 +1,42 @@
+.modal-alert-container {
+  position: absolute;
+  width: 30rem;
+  height: 20rem;
+
+  background-color: whitesmoke;
+  border: 3px solid var(--hovers);
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.modal-alert-container img {
+  width: 4rem;
+}
+
+.modal-alert-container h3 {
+  width: 75%;
+  text-align: center;
+}
+
+.modal-alert-container button {
+  width: 15rem;
+  height: 3.5rem;
+
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+
+  color: var(--secondary);
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.modal-alert-container button:hover {
+  background-color: var(--hovers);
+}
