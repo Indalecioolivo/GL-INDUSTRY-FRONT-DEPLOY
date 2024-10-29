@@ -25,6 +25,18 @@ export function GeneralContextProvider({ children }) {
     message: "",
     status: "",
   });
+  const [showModalEdit, setShowModalEdit] = useState({
+    showModal: false,
+    productInfos: {
+      id: "",
+      bar_code: "",
+      name: "",
+      description: "",
+      volume: "",
+      stock: "",
+      price: "",
+    },
+  });
   const [productRegister, setProductRegister] = useState({
     bar_code: "",
     name: "",
@@ -354,6 +366,35 @@ export function GeneralContextProvider({ children }) {
       }
     }
   }
+  async function patchProduct() {
+    const { id, bar_code, name, description, volume, stock, price } =
+      showModalEdit.productInfos;
+    try {
+      const result = await api.patch(`/products/${id}`, {
+        bar_code,
+        name,
+        description,
+        volume,
+        stock,
+        price,
+      });
+      if (result.status === 200) {
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+        await getAllProducts();
+      }
+    } catch (error) {
+      setShowModalAlert({
+        showModal: true,
+        message: error.response.data.message,
+        status: error.response.status,
+      });
+      console.log(error);
+    }
+  }
 
   return (
     <GeneralContext.Provider
@@ -392,6 +433,9 @@ export function GeneralContextProvider({ children }) {
         showModalAlert,
         setShowModalAlert,
         postNewFlow,
+        showModalEdit,
+        setShowModalEdit,
+        patchProduct,
       }}
     >
       {children}

@@ -5,6 +5,7 @@ import { useContext } from "react";
 import SearchModule from "../../modules/SearchModule/SearchModule";
 import ModalToInformations from "../../modules/ModalToInformations/ModalToInformations";
 import ModalRegister from "../../modules/ModalRegister/ModalRegister";
+import ModalEditProductOrFlow from "../../modules/ModalEditProductOrFlow/ModalEditProductOrFlow";
 
 export default function StockFlow() {
   const {

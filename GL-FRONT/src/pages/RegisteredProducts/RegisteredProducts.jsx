@@ -6,14 +6,21 @@ import SearchModule from "../../modules/SearchModule/SearchModule";
 import CardProducts from "../../modules/CardProducts/CardProducts";
 import ModalToInformations from "../../modules/ModalToInformations/ModalToInformations";
 import ModalRegister from "../../modules/ModalRegister/ModalRegister";
+import ModalEditProductOrFlow from "../../modules/ModalEditProductOrFlow/ModalEditProductOrFlow";
 
 export default function RegisteredProducts() {
-  const { toModalInformations, showModalRegister, productsData } =
-    useContext(GeneralContext);
+  const {
+    toModalInformations,
+    showModalRegister,
+    productsData,
+    showModalEdit,
+  } = useContext(GeneralContext);
+
   return (
     <section className="products-container">
       {toModalInformations.showModal ? <ModalToInformations /> : ""}
       {showModalRegister.showModal ? <ModalRegister /> : ""}
+      {showModalEdit.showModal ? <ModalEditProductOrFlow /> : ""}
       <SearchModule />
       <div className="products-area">
         {productsData.map((product) => (

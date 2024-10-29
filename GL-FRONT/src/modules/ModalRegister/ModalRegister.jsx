@@ -110,7 +110,6 @@ export default function ModalRegister() {
               type="submit"
               value="Registrar Produto"
               className="button-register"
-              // onClick={() => console.log(productRegister)}
             />
           </form>
         </div>

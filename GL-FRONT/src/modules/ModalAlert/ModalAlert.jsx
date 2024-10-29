@@ -10,10 +10,13 @@ export default function ModalAlert() {
     setShowModalAlert,
     showModalRegister,
     setShowModalRegister,
+    showModalEdit,
+    setShowModalEdit,
   } = useContext(GeneralContext);
   function handleCloseModal() {
-    if (showModalAlert.status == 201) {
+    if (showModalAlert.status == 201 || showModalAlert.status == 200) {
       setShowModalRegister({ ...showModalRegister, showModal: false });
+      setShowModalEdit({ ...showModalEdit, showModal: false });
       setShowModalAlert({ ...showModalAlert, showModal: false });
     } else {
       setShowModalAlert({ ...showModalAlert, showModal: false });
@@ -22,7 +25,11 @@ export default function ModalAlert() {
   return (
     <div className="modal-alert-container">
       <img
-        src={showModalAlert.status == 201 ? SucessImg : UnSucessImg}
+        src={
+          showModalAlert.status == 200 || showModalAlert.status == 201
+            ? SucessImg
+            : UnSucessImg
+        }
         alt=""
       />
       <h3>{showModalAlert.message}</h3>

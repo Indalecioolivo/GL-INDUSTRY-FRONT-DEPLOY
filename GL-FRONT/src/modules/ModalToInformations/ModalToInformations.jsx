@@ -4,8 +4,15 @@ import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
 
 export default function ModalProductInfo() {
-  const { toModalInformations, handleOpenModalInformations } =
+  const { toModalInformations, handleOpenModalInformations, setShowModalEdit } =
     useContext(GeneralContext);
+  function handleOpenModalEditProduct() {
+    setShowModalEdit({
+      productInfos: { ...toModalInformations.productInfos },
+      showModal: true,
+    });
+    handleOpenModalInformations(false);
+  }
 
   return (
     <div className="modalProductInfo-container">
@@ -28,7 +35,9 @@ export default function ModalProductInfo() {
           <p>{toModalInformations.productInfos.stock}</p>
           <strong>Preço</strong>
           <p>R$ {toModalInformations.productInfos.price / 10}</p>
-          <button>Editar Produto</button>
+          <button onClick={() => handleOpenModalEditProduct()}>
+            Editar Produto
+          </button>
         </div>
       ) : (
         <div className="modalProductInfo">
