@@ -11,6 +11,7 @@ export default function ModalEditProductOrFlow() {
     patchProduct,
     showModalAlert,
     toModalInformations,
+    patchFlow,
   } = useContext(GeneralContext);
   function handleCloseModal(e) {
     e.stopPropagation();
@@ -40,7 +41,7 @@ export default function ModalEditProductOrFlow() {
   }
   async function handleSubmitEditFlow(e) {
     e.preventDefault();
-    console.log(showModalEdit);
+    await patchFlow();
   }
 
   return (

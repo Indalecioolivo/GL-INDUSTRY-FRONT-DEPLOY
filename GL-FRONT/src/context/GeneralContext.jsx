@@ -396,6 +396,29 @@ export function GeneralContextProvider({ children }) {
     }
   }
 
+  async function patchFlow() {
+    let { id, type, bar_code, amount } = showModalEdit.flowInfos;
+    amount = Number(amount);
+
+    try {
+      const result = await api.patch(`/flows/${id}`, {
+        type,
+        bar_code,
+        amount,
+      });
+      if (result.status === 200) {
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+      }
+      await getAllFlows();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <GeneralContext.Provider
       value={{
@@ -436,6 +459,7 @@ export function GeneralContextProvider({ children }) {
         showModalEdit,
         setShowModalEdit,
         patchProduct,
+        patchFlow,
       }}
     >
       {children}
