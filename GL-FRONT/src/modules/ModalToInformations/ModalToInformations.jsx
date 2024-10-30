@@ -8,7 +8,14 @@ export default function ModalProductInfo() {
     useContext(GeneralContext);
   function handleOpenModalEditProduct() {
     setShowModalEdit({
-      productInfos: { ...toModalInformations.productInfos },
+      ...toModalInformations,
+      showModal: true,
+    });
+    handleOpenModalInformations(false);
+  }
+  function handleOpenModalEditFlow() {
+    setShowModalEdit({
+      ...toModalInformations,
       showModal: true,
     });
     handleOpenModalInformations(false);
@@ -55,7 +62,9 @@ export default function ModalProductInfo() {
           <p>{toModalInformations.flowInfos.type}</p>
           <strong>Código de Barras</strong>
           <p>{toModalInformations.flowInfos.bar_code}</p>
-          <button>Editar Fluxo</button>
+          <button onClick={() => handleOpenModalEditFlow()}>
+            Editar Fluxo
+          </button>
         </div>
       )}
     </div>

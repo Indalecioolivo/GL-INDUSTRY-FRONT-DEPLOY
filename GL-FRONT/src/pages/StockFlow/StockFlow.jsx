@@ -13,12 +13,14 @@ export default function StockFlow() {
     showModalRegister,
     toModalInformations,
     flowData,
+    showModalEdit,
   } = useContext(GeneralContext);
 
   return (
     <section className="stock-flow-container">
       {showModalRegister.showModal ? <ModalRegister /> : ""}
       {toModalInformations.showModal ? <ModalToInformations /> : ""}
+      {showModalEdit.showModal ? <ModalEditProductOrFlow /> : ""}
       <SearchModule />
       <table>
         <thead>

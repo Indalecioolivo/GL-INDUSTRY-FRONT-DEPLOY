@@ -53,7 +53,8 @@
   display: inline-block;
 }
 
-.modal-edit-container .modal-edit-box form input {
+.modal-edit-container .modal-edit-box form input,
+.modal-edit-container .modal-edit-box form select {
   width: 34rem;
   height: 2rem;
   padding-left: 0.5rem;
