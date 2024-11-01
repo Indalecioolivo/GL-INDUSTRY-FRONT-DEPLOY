@@ -1,5 +1,5 @@
 import "./index.css";
-import { StrictMode } from "react";
+import { StrictMode, useContext } from "react";
 import { createRoot } from "react-dom/client";
 import { GeneralContextProvider } from "./context/GeneralContext.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -10,6 +10,7 @@ import StockModule from "./pages/StockModule/StockModule.jsx";
 import RegisteredProducts from "./pages/RegisteredProducts/RegisteredProducts.jsx";
 import StockFlow from "./pages/StockFlow/StockFlow.jsx";
 import { PrivateRoutes, UnPrivateRoutes } from "./routes/routes.js";
+import { GeneralContext } from "./context/GeneralContext.jsx";
 
 const router = createBrowserRouter([
   {

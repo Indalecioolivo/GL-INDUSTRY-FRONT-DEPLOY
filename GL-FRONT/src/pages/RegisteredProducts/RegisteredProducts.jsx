@@ -1,7 +1,7 @@
 import "./RegisteredProducts.css";
 import { GeneralContext } from "../../context/GeneralContext";
 import { db } from "../../services/db";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import SearchModule from "../../modules/SearchModule/SearchModule";
 import CardProducts from "../../modules/CardProducts/CardProducts";
 import ModalToInformations from "../../modules/ModalToInformations/ModalToInformations";
@@ -14,7 +14,12 @@ export default function RegisteredProducts() {
     showModalRegister,
     productsData,
     showModalEdit,
+    setTitleContentHome,
   } = useContext(GeneralContext);
+
+  useEffect(() => {
+    setTitleContentHome("Produtos");
+  }, []);
 
   return (
     <section className="products-container">

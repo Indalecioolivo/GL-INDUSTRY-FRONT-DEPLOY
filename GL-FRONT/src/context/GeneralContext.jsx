@@ -472,7 +472,9 @@ export function GeneralContextProvider({ children }) {
     <GeneralContext.Provider
       value={{
         titleContentHome,
+        setStockHome,
         stockHome,
+        setProductHome,
         productHome,
         flowHome,
         setContentHome,
@@ -511,6 +513,7 @@ export function GeneralContextProvider({ children }) {
         patchFlow,
         deleteFlow,
         deleteProduct,
+        setTitleContentHome,
       }}
     >
       {children}

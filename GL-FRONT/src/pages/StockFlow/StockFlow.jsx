@@ -1,7 +1,7 @@
 import "./StockFlow.css";
 import { flowdb } from "../../services/db";
 import { GeneralContext } from "../../context/GeneralContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import SearchModule from "../../modules/SearchModule/SearchModule";
 import ModalToInformations from "../../modules/ModalToInformations/ModalToInformations";
 import ModalRegister from "../../modules/ModalRegister/ModalRegister";
@@ -14,8 +14,11 @@ export default function StockFlow() {
     toModalInformations,
     flowData,
     showModalEdit,
+    setTitleContentHome,
   } = useContext(GeneralContext);
-
+  useEffect(() => {
+    setTitleContentHome("Fluxo Estoque");
+  }, []);
   return (
     <section className="stock-flow-container">
       {showModalRegister.showModal ? <ModalRegister /> : ""}

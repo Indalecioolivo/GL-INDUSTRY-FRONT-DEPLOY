@@ -1,7 +1,7 @@
 import "./StockModule.css";
 import { db } from "../../services/db";
 import { GeneralContext } from "../../context/GeneralContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ModalToInformations from "../../modules/ModalToInformations/ModalToInformations";
 
 export default function StockModule() {
