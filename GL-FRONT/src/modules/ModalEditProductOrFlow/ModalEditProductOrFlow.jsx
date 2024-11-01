@@ -17,7 +17,6 @@ export default function ModalEditProductOrFlow() {
     e.stopPropagation();
     setShowModalEdit({ ...setShowModalEdit, showModal: false });
   }
-
   function handleChangeProductInfos(e) {
     const value = e.target.value;
     setShowModalEdit({
@@ -34,7 +33,6 @@ export default function ModalEditProductOrFlow() {
       },
     });
   }
-
   async function handleSubmitEdit(e) {
     e.preventDefault();
     await patchProduct();
@@ -43,7 +41,6 @@ export default function ModalEditProductOrFlow() {
     e.preventDefault();
     await patchFlow();
   }
-
   return (
     <div className="modal-edit-container">
       {showModalAlert.showModal ? <ModalAlert /> : ""}

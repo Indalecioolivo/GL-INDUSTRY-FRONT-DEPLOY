@@ -414,6 +414,7 @@ export function GeneralContextProvider({ children }) {
         });
       }
       await getAllFlows();
+      await getAllProducts();
     } catch (error) {
       console.log(error);
     }
