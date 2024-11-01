@@ -416,7 +416,55 @@ export function GeneralContextProvider({ children }) {
       await getAllFlows();
       await getAllProducts();
     } catch (error) {
-      console.log(error);
+      setShowModalAlert({
+        showModal: true,
+        message: error.response.data.message,
+        status: error.response.status,
+      });
+    }
+  }
+
+  async function deleteFlow() {
+    const { id } = toModalInformations.flowInfos;
+    console.log(id);
+
+    try {
+      const result = await api.delete(`/flows/${id}`);
+      if (result.status == 200) {
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+        await getAllFlows();
+        await getAllProducts();
+      }
+    } catch (error) {
+      setShowModalAlert({
+        showModal: true,
+        message: error.response.data.message,
+        status: error.response.status,
+      });
+    }
+  }
+
+  async function deleteProduct() {
+    const { id } = toModalInformations.productInfos;
+    try {
+      const result = await api.delete(`/products/${id}`);
+      setShowModalAlert({
+        showModal: true,
+        message: result.data.message,
+        status: result.status,
+      });
+      await getAllFlows();
+      await getAllProducts();
+    } catch (error) {
+      setShowModalAlert({
+        showModal: true,
+        message: error.response.data.message,
+        status: error.response.status,
+      });
     }
   }
 
@@ -461,6 +509,8 @@ export function GeneralContextProvider({ children }) {
         setShowModalEdit,
         patchProduct,
         patchFlow,
+        deleteFlow,
+        deleteProduct,
       }}
     >
       {children}

@@ -1,11 +1,18 @@
 import "./ModalToInformations.css";
-import CloseIcon from "../../assets/close-icon.png";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
+import CloseIcon from "../../assets/close-icon.png";
+import ModalAlert from "../ModalAlert/ModalAlert";
 
 export default function ModalProductInfo() {
-  const { toModalInformations, handleOpenModalInformations, setShowModalEdit } =
-    useContext(GeneralContext);
+  const {
+    toModalInformations,
+    handleOpenModalInformations,
+    setShowModalEdit,
+    deleteFlow,
+    showModalAlert,
+    deleteProduct,
+  } = useContext(GeneralContext);
   function handleOpenModalEditProduct() {
     setShowModalEdit({
       ...toModalInformations,
@@ -21,8 +28,20 @@ export default function ModalProductInfo() {
     handleOpenModalInformations(false);
   }
 
+  function handleExclude() {
+    if (
+      toModalInformations.currentPage === "Produtos" ||
+      toModalInformations.currentPage === "Estoque"
+    ) {
+      deleteProduct();
+    } else {
+      deleteFlow();
+    }
+  }
+
   return (
     <div className="modalProductInfo-container">
+      {showModalAlert.showModal ? <ModalAlert /> : ""}
       {toModalInformations.currentPage === "Produtos" ||
       toModalInformations.currentPage === "Estoque" ? (
         <div className="modalProductInfo">
@@ -42,9 +61,14 @@ export default function ModalProductInfo() {
           <p>{toModalInformations.productInfos.stock}</p>
           <strong>Preço</strong>
           <p>R$ {toModalInformations.productInfos.price / 10}</p>
-          <button onClick={() => handleOpenModalEditProduct()}>
-            Editar Produto
-          </button>
+          <div className="for-buttons">
+            <button onClick={() => handleOpenModalEditProduct()}>
+              Editar Produto
+            </button>
+            <button className="btn-exclude" onClick={(e) => handleExclude(e)}>
+              Excluir Produto
+            </button>
+          </div>
         </div>
       ) : (
         <div className="modalProductInfo">
@@ -62,9 +86,14 @@ export default function ModalProductInfo() {
           <p>{toModalInformations.flowInfos.type}</p>
           <strong>Código de Barras</strong>
           <p>{toModalInformations.flowInfos.bar_code}</p>
-          <button onClick={() => handleOpenModalEditFlow()}>
-            Editar Fluxo
-          </button>
+          <div className="for-buttons">
+            <button onClick={() => handleOpenModalEditFlow()}>
+              Editar Fluxo
+            </button>
+            <button className="btn-exclude" onClick={(e) => handleExclude(e)}>
+              Excluir Fluxo
+            </button>
+          </div>
         </div>
       )}
     </div>
