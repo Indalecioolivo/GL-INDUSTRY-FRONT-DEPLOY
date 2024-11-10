@@ -10,7 +10,6 @@ import StockModule from "./pages/StockModule/StockModule.jsx";
 import RegisteredProducts from "./pages/RegisteredProducts/RegisteredProducts.jsx";
 import StockFlow from "./pages/StockFlow/StockFlow.jsx";
 import { PrivateRoutes, UnPrivateRoutes } from "./routes/routes.js";
-import { GeneralContext } from "./context/GeneralContext.jsx";
 
 const router = createBrowserRouter([
   {

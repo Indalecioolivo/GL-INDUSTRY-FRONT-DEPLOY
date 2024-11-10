@@ -18,6 +18,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const result = await api.post("/login", { credentials });
+
       if (result.status === 200) {
         const { token } = result.data;
         setItem("tokenGL", token);
