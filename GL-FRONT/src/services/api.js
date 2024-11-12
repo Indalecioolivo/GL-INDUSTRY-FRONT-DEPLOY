@@ -2,7 +2,7 @@ import axios from "axios";
 import { getItem } from "../utils/storage";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://api-gl-backend-dc5aec0a15e3.herokuapp.com/",
   timeout: 1000,
   headers: { "X-Custom-Header": "foobar" },
 });
