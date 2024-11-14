@@ -8,5 +8,5 @@ export function PrivateRoutes({ children }) {
 
 export function UnPrivateRoutes({ children }) {
   const token = getItem("tokenGL");
-  return !token ? children : <Navigate to="/" />;
+  return !token ? <Navigate to="/login" /> : <Navigate to="/" />;
 }
