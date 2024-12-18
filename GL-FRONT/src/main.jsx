@@ -13,45 +13,25 @@ import { PrivateRoutes, UnPrivateRoutes } from "./routes/routes.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <PrivateRoutes>
-        <App />
-      </PrivateRoutes>
-    ),
+    element: <App />,
     children: [
       {
         path: "/",
-        element: (
-          <PrivateRoutes>
-            <StockModule />
-          </PrivateRoutes>
-        ),
+        element: <StockModule />,
       },
       {
         path: "/products",
-        element: (
-          <PrivateRoutes>
-            <RegisteredProducts />
-          </PrivateRoutes>
-        ),
+        element: <RegisteredProducts />,
       },
       {
         path: "/flows",
-        element: (
-          <PrivateRoutes>
-            <StockFlow />
-          </PrivateRoutes>
-        ),
+        element: <StockFlow />,
       },
     ],
   },
   {
     path: "/login",
-    element: (
-      <UnPrivateRoutes>
-        <Login />
-      </UnPrivateRoutes>
-    ),
+    element: <Login />,
   },
 ]);
 
