@@ -24,7 +24,7 @@
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 
 .stock-module-container table thead tr th {
@@ -58,7 +58,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 
 .stock-module-container table tbody tr:hover {

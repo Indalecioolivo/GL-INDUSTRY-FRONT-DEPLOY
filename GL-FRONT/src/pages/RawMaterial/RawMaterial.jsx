@@ -1,5 +1,33 @@
-import "./RawMaterial.css";
+// import "./RawMaterial.css";
+import "../StockModule/StockModule.css";
+import { useContext } from "react";
+import { GeneralContext } from "../../context/GeneralContext";
 
 export default function RawMaterial() {
-  return <div>RawMaterial Page</div>;
+  const { rawMaterialData } = useContext(GeneralContext);
+
+  return (
+    <section className="stock-module-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cód Barras</th>
+            <th>Qtd. Estoque</th>
+            <th>Estado Físico Matéria</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rawMaterialData.map((rawMaterial) => (
+            <tr key={rawMaterial.id}>
+              <td>{rawMaterial.name}</td>
+              <td>{rawMaterial.bar_code}</td>
+              <td>{rawMaterial.stock}</td>
+              <td>Incluir estado da matéria bd</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
 }

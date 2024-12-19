@@ -12,6 +12,7 @@ export function GeneralContextProvider({ children }) {
   const [productsData, setProductsData] = useState([]);
   const [userData, setUserData] = useState({});
   const [flowData, setFlowData] = useState([]);
+  const [rawMaterialData, setRawMaterialData] = useState([]);
   const [titleContentHome, setTitleContentHome] = useState("Estoque");
   const [stockHome, setStockHome] = useState(true);
   const [productHome, setProductHome] = useState(false);
@@ -293,6 +294,14 @@ export function GeneralContextProvider({ children }) {
       console.log(error);
     }
   }
+  async function getAllRawMaterial() {
+    try {
+      const { data } = await api.get("/raw-materials");
+      setRawMaterialData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async function postNewProduct() {
     try {
       const { bar_code, name, description, volume, stock, price } =
@@ -514,6 +523,8 @@ export function GeneralContextProvider({ children }) {
         deleteFlow,
         deleteProduct,
         setTitleContentHome,
+        rawMaterialData,
+        getAllRawMaterial,
       }}
     >
       {children}
