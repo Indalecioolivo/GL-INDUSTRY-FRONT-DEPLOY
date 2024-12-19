@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import StockIcon from "../../assets/stock-icon.png";
 import ProductIcon from "../../assets/product-icon.png";
 import FlowIcon from "../../assets/flow-icon.png";
+import RawMaterial from "../../assets/chemical-icon.png";
 
 export default function NavBar() {
   const { setContentHome } = useContext(GeneralContext);
@@ -24,6 +25,13 @@ export default function NavBar() {
         <img
           onClick={() => setContentHome("Fluxo Estoque")}
           src={FlowIcon}
+          alt=""
+        />
+      </Link>
+      <Link to="/raw-material">
+        <img
+          onClick={() => setContentHome("Matéria Prima")}
+          src={RawMaterial}
           alt=""
         />
       </Link>
