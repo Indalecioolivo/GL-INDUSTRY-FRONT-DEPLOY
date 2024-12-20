@@ -1,0 +1,61 @@
+.filter-register-div {
+  height: 7rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.filter-register-div button {
+  width: 15rem;
+  height: 3rem;
+
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+
+  color: var(--secondary);
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.filter-register-div button:hover {
+  background-color: var(--hovers);
+}
+
+.filter-register-div .toInput {
+  width: auto;
+  height: 7rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-register-div .toInput input {
+  width: 30rem;
+  height: 3rem;
+
+  border: 1px solid var(--hovers);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+
+  padding-left: 1rem;
+  font-size: large;
+}
+
+.filter-register-div .toInput .searchIcon {
+  height: 3rem;
+
+  background-color: var(--primary);
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+
+  cursor: pointer;
+}
+
+.filter-register-div .toInput .searchIcon:hover {
+  background-color: var(--hovers);
+}

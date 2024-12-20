@@ -1,5 +1,4 @@
 import "./StockFlow.css";
-import { flowdb } from "../../services/db";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext, useEffect } from "react";
 import SearchModule from "../../modules/SearchModule/SearchModule";
