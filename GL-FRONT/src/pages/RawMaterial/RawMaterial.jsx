@@ -3,6 +3,7 @@ import "../StockModule/StockModule.css";
 import { useContext } from "react";
 import { GeneralContext } from "../../context/GeneralContext";
 import FilterRegisterModule from "../../modules/FilterRegisterModule/FilterRegisterModule";
+import ModalToRegisterRawMaterial from "../../modules/ModalToRegisterRawMaterial/ModalToRegisterRawMaterial";
 
 export default function RawMaterial() {
   const { rawMaterialData } = useContext(GeneralContext);
@@ -10,6 +11,7 @@ export default function RawMaterial() {
   return (
     <section className="stock-module-container">
       <FilterRegisterModule />
+      <ModalToRegisterRawMaterial />
       <table>
         <thead>
           <tr>
