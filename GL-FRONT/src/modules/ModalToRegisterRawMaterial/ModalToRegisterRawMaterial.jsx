@@ -2,19 +2,25 @@ import "./ModalToRegisterRawMaterial.css";
 import { GeneralContext } from "../../context/GeneralContext";
 import CloseIcon from "../../assets/close-icon.png";
 import { useContext } from "react";
+import ModalAlert from "../ModalAlert/ModalAlert";
 
 export default function ModalToRegisterRawMaterial() {
   const {
     setShowModalRegisterRawMaterial,
     rawMaterialRegister,
     handleRawMaterialRegister,
+    postNewRawMaterial,
+    showModalAlert,
   } = useContext(GeneralContext);
   async function handleSubmitRawMaterial(e) {
     e.preventDefault();
+    postNewRawMaterial();
   }
+  console.log(showModalAlert);
 
   return (
     <div className="modalrawmaterial-container">
+      {showModalAlert.showModal ? <ModalAlert /> : ""}
       <div className="modal-add-rawmaterial">
         <img
           src={CloseIcon}
@@ -54,7 +60,7 @@ export default function ModalToRegisterRawMaterial() {
             type="submit"
             value="Registrar Fluxo"
             className="button-register"
-            onClick={(e) => console.log(rawMaterialRegister)}
+            // onClick={(e) => console.log(rawMaterialRegister)}
           />
         </form>
       </div>

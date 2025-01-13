@@ -317,6 +317,40 @@ export function GeneralContextProvider({ children }) {
       console.log(error);
     }
   }
+  async function postNewRawMaterial() {
+    try {
+      const { name, bar_code, amount } = rawMaterialRegister;
+      const result = await api.post("/raw-materials", {
+        name,
+        bar_code,
+        stock: Number(amount),
+      });
+      console.log(result);
+
+      if (result.status === 201) {
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+        setRawMaterialRegister({
+          name: "",
+          bar_code: "",
+          amount: 0,
+        });
+        await getAllRawMaterial();
+        setShowModalRegisterRawMaterial(false);
+      }
+    } catch (error) {
+      if (error.status === 400) {
+        setShowModalAlert({
+          showModal: true,
+          message: error.response.data.message,
+          status: error.response.status,
+        });
+      }
+    }
+  }
   async function postNewProduct() {
     try {
       const { bar_code, name, description, volume, stock, price } =
@@ -545,6 +579,7 @@ export function GeneralContextProvider({ children }) {
         rawMaterialRegister,
         setRawMaterialRegister,
         handleRawMaterialRegister,
+        postNewRawMaterial,
       }}
     >
       {children}
