@@ -6,12 +6,13 @@ import FilterRegisterModule from "../../modules/FilterRegisterModule/FilterRegis
 import ModalToRegisterRawMaterial from "../../modules/ModalToRegisterRawMaterial/ModalToRegisterRawMaterial";
 
 export default function RawMaterial() {
-  const { rawMaterialData } = useContext(GeneralContext);
+  const { rawMaterialData, showModalRegisterRawMaterial } =
+    useContext(GeneralContext);
 
   return (
     <section className="stock-module-container">
       <FilterRegisterModule />
-      <ModalToRegisterRawMaterial />
+      {showModalRegisterRawMaterial ? <ModalToRegisterRawMaterial /> : ""}
       <table>
         <thead>
           <tr>

@@ -88,6 +88,13 @@ export function GeneralContextProvider({ children }) {
     volume: false,
     price: false,
   });
+  const [showModalRegisterRawMaterial, setShowModalRegisterRawMaterial] =
+    useState(false);
+  const [rawMaterialRegister, setRawMaterialRegister] = useState({
+    name: "",
+    bar_code: "",
+    amount: 0,
+  });
 
   function setContentHome(content) {
     setTitleContentHome(content);
@@ -183,6 +190,14 @@ export function GeneralContextProvider({ children }) {
   function handleFlowRegister(event) {
     const value = event.target.value;
     setFlowRegister({ ...flowRegister, [event.target.name]: value });
+  }
+
+  function handleRawMaterialRegister(event) {
+    const value = event.target.value;
+    setRawMaterialRegister({
+      ...rawMaterialRegister,
+      [event.target.name]: value,
+    });
   }
 
   function validateFields(event, value) {
@@ -525,6 +540,11 @@ export function GeneralContextProvider({ children }) {
         setTitleContentHome,
         rawMaterialData,
         getAllRawMaterial,
+        showModalRegisterRawMaterial,
+        setShowModalRegisterRawMaterial,
+        rawMaterialRegister,
+        setRawMaterialRegister,
+        handleRawMaterialRegister,
       }}
     >
       {children}
