@@ -326,23 +326,25 @@ export function GeneralContextProvider({ children }) {
         stock: Number(amount),
       });
       console.log(result);
-
       if (result.status === 201) {
+        console.log(showModalAlert);
         setShowModalAlert({
           showModal: true,
           message: result.data.message,
           status: result.status,
         });
+        console.log(showModalAlert);
         setRawMaterialRegister({
           name: "",
           bar_code: "",
           amount: 0,
         });
+        console.log(showModalAlert);
         await getAllRawMaterial();
-        setShowModalRegisterRawMaterial(false);
+        // setShowModalRegisterRawMaterial(false);
       }
     } catch (error) {
-      if (error.status === 400) {
+      if (error.status === 400 || error.status === 404) {
         setShowModalAlert({
           showModal: true,
           message: error.response.data.message,

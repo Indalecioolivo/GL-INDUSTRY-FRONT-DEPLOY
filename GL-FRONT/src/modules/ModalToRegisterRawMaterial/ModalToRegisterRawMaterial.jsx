@@ -14,9 +14,8 @@ export default function ModalToRegisterRawMaterial() {
   } = useContext(GeneralContext);
   async function handleSubmitRawMaterial(e) {
     e.preventDefault();
-    postNewRawMaterial();
+    await postNewRawMaterial();
   }
-  console.log(showModalAlert);
 
   return (
     <div className="modalrawmaterial-container">

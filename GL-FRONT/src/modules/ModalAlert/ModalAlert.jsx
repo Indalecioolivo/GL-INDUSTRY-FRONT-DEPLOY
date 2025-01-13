@@ -27,7 +27,7 @@ export default function ModalAlert() {
       setShowModalAlert({ ...showModalAlert, showModal: false });
     }
   }
-
+  console.log("modalalert");
   return (
     <div className="modal-alert-container">
       <img
