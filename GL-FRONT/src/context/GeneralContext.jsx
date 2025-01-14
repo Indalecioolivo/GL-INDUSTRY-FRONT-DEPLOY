@@ -12,6 +12,7 @@ export function GeneralContextProvider({ children }) {
   const [productsData, setProductsData] = useState([]);
   const [userData, setUserData] = useState({});
   const [flowData, setFlowData] = useState([]);
+  const [rawMaterialData, setRawMaterialData] = useState([]);
   const [titleContentHome, setTitleContentHome] = useState("Estoque");
   const [stockHome, setStockHome] = useState(true);
   const [productHome, setProductHome] = useState(false);
@@ -86,6 +87,13 @@ export function GeneralContextProvider({ children }) {
     description: false,
     volume: false,
     price: false,
+  });
+  const [showModalRegisterRawMaterial, setShowModalRegisterRawMaterial] =
+    useState(false);
+  const [rawMaterialRegister, setRawMaterialRegister] = useState({
+    name: "",
+    bar_code: "",
+    amount: 0,
   });
 
   function setContentHome(content) {
@@ -182,6 +190,14 @@ export function GeneralContextProvider({ children }) {
   function handleFlowRegister(event) {
     const value = event.target.value;
     setFlowRegister({ ...flowRegister, [event.target.name]: value });
+  }
+
+  function handleRawMaterialRegister(event) {
+    const value = event.target.value;
+    setRawMaterialRegister({
+      ...rawMaterialRegister,
+      [event.target.name]: value,
+    });
   }
 
   function validateFields(event, value) {
@@ -291,6 +307,50 @@ export function GeneralContextProvider({ children }) {
       setFlowData([...data]);
     } catch (error) {
       console.log(error);
+    }
+  }
+  async function getAllRawMaterial() {
+    try {
+      const { data } = await api.get("/raw-materials");
+      setRawMaterialData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function postNewRawMaterial() {
+    try {
+      const { name, bar_code, amount } = rawMaterialRegister;
+      const result = await api.post("/raw-materials", {
+        name,
+        bar_code,
+        stock: Number(amount),
+      });
+      console.log(result);
+      if (result.status === 201) {
+        console.log(showModalAlert);
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+        console.log(showModalAlert);
+        setRawMaterialRegister({
+          name: "",
+          bar_code: "",
+          amount: 0,
+        });
+        console.log(showModalAlert);
+        await getAllRawMaterial();
+        // setShowModalRegisterRawMaterial(false);
+      }
+    } catch (error) {
+      if (error.status === 400 || error.status === 404) {
+        setShowModalAlert({
+          showModal: true,
+          message: error.response.data.message,
+          status: error.response.status,
+        });
+      }
     }
   }
   async function postNewProduct() {
@@ -514,6 +574,14 @@ export function GeneralContextProvider({ children }) {
         deleteFlow,
         deleteProduct,
         setTitleContentHome,
+        rawMaterialData,
+        getAllRawMaterial,
+        showModalRegisterRawMaterial,
+        setShowModalRegisterRawMaterial,
+        rawMaterialRegister,
+        setRawMaterialRegister,
+        handleRawMaterialRegister,
+        postNewRawMaterial,
       }}
     >
       {children}

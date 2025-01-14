@@ -14,6 +14,7 @@ export default function ModalAlert() {
     setShowModalEdit,
     toModalInformations,
     setToModalInformations,
+    setShowModalRegisterRawMaterial,
   } = useContext(GeneralContext);
   function handleCloseModal() {
     if (showModalAlert.status == 201 || showModalAlert.status == 200) {
@@ -21,10 +22,12 @@ export default function ModalAlert() {
       setShowModalEdit({ ...showModalEdit, showModal: false });
       setToModalInformations({ ...toModalInformations, showModal: false });
       setShowModalAlert({ ...showModalAlert, showModal: false });
+      setShowModalRegisterRawMaterial(false);
     } else {
       setShowModalAlert({ ...showModalAlert, showModal: false });
     }
   }
+  console.log("modalalert");
   return (
     <div className="modal-alert-container">
       <img

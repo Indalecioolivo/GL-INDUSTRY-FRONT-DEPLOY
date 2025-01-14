@@ -1,0 +1,88 @@
+.modalrawmaterial-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(139, 198, 233, 0.5);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial {
+  border: 1px solid black;
+  width: 40rem;
+  height: 45rem;
+
+  border-radius: 3rem;
+  background-color: var(--secondary);
+  z-index: 1;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial img {
+  height: 2.5rem;
+
+  position: relative;
+  left: 35rem;
+  top: 2.7rem;
+  z-index: 1;
+
+  cursor: pointer;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial img:hover {
+  background-color: var(--hovers);
+  border-radius: 50%;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial h2 {
+  height: 2.5rem;
+  text-align: center;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial form {
+  padding-left: 3rem;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial label {
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial input {
+  width: 34rem;
+  height: 2rem;
+  display: block;
+  padding-left: 0.5rem;
+  font-size: medium;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial p {
+  color: red;
+  font-size: small;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial form .button-register {
+  width: 15rem;
+  height: 3.5rem;
+
+  margin: 2rem 0 0 9.5rem;
+
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+
+  color: var(--secondary);
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.modalrawmaterial-container .modal-add-rawmaterial form .button-register:hover {
+  background-color: var(--hovers);
+}

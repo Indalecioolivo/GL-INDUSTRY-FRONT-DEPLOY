@@ -29,12 +29,10 @@ export default function ModalRegister() {
     e.preventDefault();
     await postNewProduct();
   }
-
   async function handleSubmitFlow(e) {
     e.preventDefault();
     postNewFlow();
   }
-
   return (
     <div className="modalRegister-container">
       {showModalAlert.showModal ? <ModalAlert /> : ""}
