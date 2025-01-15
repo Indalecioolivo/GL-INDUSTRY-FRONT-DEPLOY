@@ -27,13 +27,13 @@ export default function ModalToInfoRawMaterial() {
           <button
           // onClick={() => handleOpenModalEditFlow()}
           >
-            Editar Fluxo
+            Editar Matéria Prima
           </button>
           <button
             className="btn-exclude"
             // onClick={(e) => handleExclude(e)}
           >
-            Excluir Fluxo
+            Excluir Matéria Prima
           </button>
         </div>
       </div>
