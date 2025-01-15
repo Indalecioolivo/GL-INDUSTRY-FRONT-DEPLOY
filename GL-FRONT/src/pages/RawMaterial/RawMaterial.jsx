@@ -5,6 +5,7 @@ import { GeneralContext } from "../../context/GeneralContext";
 import FilterRegisterModule from "../../modules/FilterRegisterModule/FilterRegisterModule";
 import ModalToRegisterRawMaterial from "../../modules/ModalToRegisterRawMaterial/ModalToRegisterRawMaterial";
 import ModalToInfoRawMaterial from "../../modules/ModalToInfoRawMaterial/ModalToInfoRawMaterial";
+import ModalEditRawMaterial from "../../modules/ModalEditRawMaterial/ModalEditRawMaterial";
 
 export default function RawMaterial() {
   const {
@@ -12,6 +13,7 @@ export default function RawMaterial() {
     showModalRegisterRawMaterial,
     toRawMaterialInformations,
     handleOpenModalRawMaterialInformations,
+    toEditRawMaterial,
   } = useContext(GeneralContext);
 
   return (
@@ -19,6 +21,7 @@ export default function RawMaterial() {
       <FilterRegisterModule />
       {showModalRegisterRawMaterial ? <ModalToRegisterRawMaterial /> : ""}
       {toRawMaterialInformations.showModal ? <ModalToInfoRawMaterial /> : ""}
+      {toEditRawMaterial.showModal ? <ModalEditRawMaterial /> : ""}
       <table>
         <thead>
           <tr>

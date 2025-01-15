@@ -80,6 +80,13 @@ export function GeneralContextProvider({ children }) {
     stock: "",
     id: "",
   });
+  const [toEditRawMaterial, setToEditRawMaterial] = useState({
+    showModal: false,
+    name: "",
+    bar_code: "",
+    stock: "",
+    id: "",
+  });
   const [errorsRegisterFlow, setErrorsRegisterFlow] = useState({
     name: false,
     amount: false,
@@ -102,6 +109,10 @@ export function GeneralContextProvider({ children }) {
     bar_code: "",
     amount: 0,
   });
+  function handleOpenModalEditRawMaterial(showModal) {
+    setToEditRawMaterial({ showModal, ...toRawMaterialInformations });
+    handleOpenModalRawMaterialInformations(false);
+  }
   function handleOpenModalRawMaterialInformations(
     showModal,
     name,
@@ -111,7 +122,6 @@ export function GeneralContextProvider({ children }) {
   ) {
     setToRawMaterialInformations({ showModal, name, bar_code, stock, id });
   }
-
   function setContentHome(content) {
     setTitleContentHome(content);
     setShowModalRegister({ ...showModalRegister, currentPage: content });
@@ -601,6 +611,9 @@ export function GeneralContextProvider({ children }) {
         toRawMaterialInformations,
         setToRawMaterialInformations,
         handleOpenModalRawMaterialInformations,
+        toEditRawMaterial,
+        setToEditRawMaterial,
+        handleOpenModalEditRawMaterial,
       }}
     >
       {children}

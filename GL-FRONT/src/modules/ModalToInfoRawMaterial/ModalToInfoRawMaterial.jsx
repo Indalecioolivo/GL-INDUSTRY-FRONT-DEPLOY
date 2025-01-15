@@ -4,9 +4,11 @@ import { useContext } from "react";
 import CloseIcon from "../../assets/close-icon.png";
 
 export default function ModalToInfoRawMaterial() {
-  const { toRawMaterialInformations, handleOpenModalRawMaterialInformations } =
-    useContext(GeneralContext);
-  console.log(toRawMaterialInformations);
+  const {
+    toRawMaterialInformations,
+    handleOpenModalRawMaterialInformations,
+    handleOpenModalEditRawMaterial,
+  } = useContext(GeneralContext);
 
   return (
     <div className="modalRawMaterialInfo-container">
@@ -24,9 +26,7 @@ export default function ModalToInfoRawMaterial() {
         <strong>Quantidade:</strong>
         <p>{toRawMaterialInformations.stock}</p>
         <div className="for-buttons">
-          <button
-          // onClick={() => handleOpenModalEditFlow()}
-          >
+          <button onClick={() => handleOpenModalEditRawMaterial(true)}>
             Editar Matéria Prima
           </button>
           <button
