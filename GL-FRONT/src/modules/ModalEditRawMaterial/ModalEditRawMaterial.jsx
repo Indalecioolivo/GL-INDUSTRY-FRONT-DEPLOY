@@ -2,12 +2,15 @@ import "./ModalEditRawMaterial.css";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
 import CloseIcon from "../../assets/close-icon.png";
+import ModalAlert from "../ModalAlert/ModalAlert";
 
 export default function ModalEditRawMaterial() {
   const {
     toEditRawMaterial,
     setToEditRawMaterial,
     handleOpenModalEditRawMaterial,
+    patchRawMaterial,
+    showModalAlert,
   } = useContext(GeneralContext);
 
   function handleChangeRawMaterialInfo(e) {
@@ -20,9 +23,11 @@ export default function ModalEditRawMaterial() {
 
   async function handleSubmitEdit(e) {
     e.preventDefault();
+    await patchRawMaterial();
   }
   return (
     <div className="modal-edit-container">
+      {showModalAlert.showModal ? <ModalAlert /> : ""}
       <div className="modal-edit-box">
         <img
           src={CloseIcon}
