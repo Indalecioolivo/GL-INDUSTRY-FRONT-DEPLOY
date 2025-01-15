@@ -57,7 +57,7 @@ export default function ModalToRegisterRawMaterial() {
           />
           <input
             type="submit"
-            value="Registrar Fluxo"
+            value="Registrar Matéria Prima"
             className="button-register"
             // onClick={(e) => console.log(rawMaterialRegister)}
           />

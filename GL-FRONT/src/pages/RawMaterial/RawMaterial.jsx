@@ -4,15 +4,21 @@ import { useContext } from "react";
 import { GeneralContext } from "../../context/GeneralContext";
 import FilterRegisterModule from "../../modules/FilterRegisterModule/FilterRegisterModule";
 import ModalToRegisterRawMaterial from "../../modules/ModalToRegisterRawMaterial/ModalToRegisterRawMaterial";
+import ModalToInfoRawMaterial from "../../modules/ModalToInfoRawMaterial/ModalToInfoRawMaterial";
 
 export default function RawMaterial() {
-  const { rawMaterialData, showModalRegisterRawMaterial } =
-    useContext(GeneralContext);
+  const {
+    rawMaterialData,
+    showModalRegisterRawMaterial,
+    toRawMaterialInformations,
+    handleOpenModalRawMaterialInformations,
+  } = useContext(GeneralContext);
 
   return (
     <section className="stock-module-container">
       <FilterRegisterModule />
       {showModalRegisterRawMaterial ? <ModalToRegisterRawMaterial /> : ""}
+      {toRawMaterialInformations.showModal ? <ModalToInfoRawMaterial /> : ""}
       <table>
         <thead>
           <tr>
@@ -24,11 +30,22 @@ export default function RawMaterial() {
         </thead>
         <tbody>
           {rawMaterialData.map((rawMaterial) => (
-            <tr key={rawMaterial.id}>
+            <tr
+              key={rawMaterial.id}
+              onClick={() =>
+                handleOpenModalRawMaterialInformations(
+                  true,
+                  rawMaterial.name,
+                  rawMaterial.bar_code,
+                  rawMaterial.stock,
+                  rawMaterial.id
+                )
+              }
+            >
               <td>{rawMaterial.name}</td>
               <td>{rawMaterial.bar_code}</td>
               <td>{rawMaterial.stock}</td>
-              <td>Incluir estado da matéria bd</td>
+              <td>Em Breve</td>
             </tr>
           ))}
         </tbody>

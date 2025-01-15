@@ -73,6 +73,13 @@ export function GeneralContextProvider({ children }) {
       bar_code: "",
     },
   });
+  const [toRawMaterialInformations, setToRawMaterialInformations] = useState({
+    showModal: false,
+    name: "",
+    bar_code: "",
+    stock: "",
+    id: "",
+  });
   const [errorsRegisterFlow, setErrorsRegisterFlow] = useState({
     name: false,
     amount: false,
@@ -95,6 +102,15 @@ export function GeneralContextProvider({ children }) {
     bar_code: "",
     amount: 0,
   });
+  function handleOpenModalRawMaterialInformations(
+    showModal,
+    name,
+    bar_code,
+    stock,
+    id
+  ) {
+    setToRawMaterialInformations({ showModal, name, bar_code, stock, id });
+  }
 
   function setContentHome(content) {
     setTitleContentHome(content);
@@ -582,6 +598,9 @@ export function GeneralContextProvider({ children }) {
         setRawMaterialRegister,
         handleRawMaterialRegister,
         postNewRawMaterial,
+        toRawMaterialInformations,
+        setToRawMaterialInformations,
+        handleOpenModalRawMaterialInformations,
       }}
     >
       {children}
