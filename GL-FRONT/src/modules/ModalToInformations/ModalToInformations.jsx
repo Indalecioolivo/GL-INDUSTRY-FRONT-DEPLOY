@@ -27,7 +27,6 @@ export default function ModalProductInfo() {
     });
     handleOpenModalInformations(false);
   }
-
   function handleExclude() {
     if (
       toModalInformations.currentPage === "Produtos" ||
@@ -38,7 +37,6 @@ export default function ModalProductInfo() {
       deleteFlow();
     }
   }
-
   return (
     <div className="modalProductInfo-container">
       {showModalAlert.showModal ? <ModalAlert /> : ""}

@@ -73,6 +73,20 @@ export function GeneralContextProvider({ children }) {
       bar_code: "",
     },
   });
+  const [toRawMaterialInformations, setToRawMaterialInformations] = useState({
+    showModal: false,
+    name: "",
+    bar_code: "",
+    stock: "",
+    id: "",
+  });
+  const [toEditRawMaterial, setToEditRawMaterial] = useState({
+    showModal: false,
+    name: "",
+    bar_code: "",
+    stock: "",
+    id: "",
+  });
   const [errorsRegisterFlow, setErrorsRegisterFlow] = useState({
     name: false,
     amount: false,
@@ -95,7 +109,19 @@ export function GeneralContextProvider({ children }) {
     bar_code: "",
     amount: 0,
   });
-
+  function handleOpenModalEditRawMaterial(showModal) {
+    setToEditRawMaterial({ showModal, ...toRawMaterialInformations });
+    handleOpenModalRawMaterialInformations(false);
+  }
+  function handleOpenModalRawMaterialInformations(
+    showModal,
+    name,
+    bar_code,
+    stock,
+    id
+  ) {
+    setToRawMaterialInformations({ showModal, name, bar_code, stock, id });
+  }
   function setContentHome(content) {
     setTitleContentHome(content);
     setShowModalRegister({ ...showModalRegister, currentPage: content });
@@ -353,6 +379,29 @@ export function GeneralContextProvider({ children }) {
       }
     }
   }
+  async function patchRawMaterial() {
+    const { id, name, bar_code } = toEditRawMaterial;
+    try {
+      const result = await api.patch(`/raw-materials/${id}`, {
+        bar_code,
+        name,
+      });
+      if (result.status === 200) {
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+        await getAllRawMaterial();
+      }
+    } catch (error) {
+      setShowModalAlert({
+        showModal: true,
+        message: error.response.data.message,
+        status: error.response.status,
+      });
+    }
+  }
   async function postNewProduct() {
     try {
       const { bar_code, name, description, volume, stock, price } =
@@ -582,6 +631,13 @@ export function GeneralContextProvider({ children }) {
         setRawMaterialRegister,
         handleRawMaterialRegister,
         postNewRawMaterial,
+        toRawMaterialInformations,
+        setToRawMaterialInformations,
+        handleOpenModalRawMaterialInformations,
+        toEditRawMaterial,
+        setToEditRawMaterial,
+        handleOpenModalEditRawMaterial,
+        patchRawMaterial,
       }}
     >
       {children}
