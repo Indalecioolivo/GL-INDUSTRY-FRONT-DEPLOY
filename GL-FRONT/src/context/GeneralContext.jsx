@@ -13,6 +13,7 @@ export function GeneralContextProvider({ children }) {
   const [userData, setUserData] = useState({});
   const [flowData, setFlowData] = useState([]);
   const [rawMaterialData, setRawMaterialData] = useState([]);
+  const [flowRawMaterialData, setFlowRawMaterialData] = useState([]);
   const [titleContentHome, setTitleContentHome] = useState("Estoque");
   const [stockHome, setStockHome] = useState(true);
   const [productHome, setProductHome] = useState(false);
@@ -20,6 +21,14 @@ export function GeneralContextProvider({ children }) {
   const [showModalRegister, setShowModalRegister] = useState({
     showModal: false,
     currentPage: "",
+  });
+  const [toModalFlowInfos, setToModalFlowInfos] = useState({
+    showModal: false,
+    title: "",
+    amount: "",
+    date: "",
+    type: "",
+    bar_code: "",
   });
   const [showModalAlert, setShowModalAlert] = useState({
     showModal: false,
@@ -344,6 +353,16 @@ export function GeneralContextProvider({ children }) {
       console.log(error);
     }
   }
+
+  async function getAllFlowsRawMaterial() {
+    try {
+      const { data } = await api.get("/flows-raw-materials");
+      setFlowRawMaterialData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async function postNewRawMaterial() {
     try {
       const { name, bar_code, amount } = rawMaterialRegister;
@@ -536,7 +555,6 @@ export function GeneralContextProvider({ children }) {
 
   async function deleteFlow() {
     const { id } = toModalInformations.flowInfos;
-    console.log(id);
 
     try {
       const result = await api.delete(`/flows/${id}`);
@@ -662,6 +680,11 @@ export function GeneralContextProvider({ children }) {
         showModalConfirmation,
         setShowModalConfirmation,
         deleteRawMaterial,
+        flowRawMaterialData,
+        setFlowRawMaterialData,
+        getAllFlowsRawMaterial,
+        toModalFlowInfos,
+        setToModalFlowInfos,
       }}
     >
       {children}
