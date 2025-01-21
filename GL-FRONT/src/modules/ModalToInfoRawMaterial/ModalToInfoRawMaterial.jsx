@@ -1,6 +1,8 @@
 import "./ModalToInfoRawMaterial.css";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
+import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
+import ModalAlert from "../ModalAlert/ModalAlert";
 import CloseIcon from "../../assets/close-icon.png";
 
 export default function ModalToInfoRawMaterial() {
@@ -8,10 +10,13 @@ export default function ModalToInfoRawMaterial() {
     toRawMaterialInformations,
     handleOpenModalRawMaterialInformations,
     handleOpenModalEditRawMaterial,
+    showModalAlert,
   } = useContext(GeneralContext);
 
   return (
     <div className="modalRawMaterialInfo-container">
+      {showModalAlert.showModal ? <ModalAlert /> : ""}
+      {/* {true ? <ModalConfirmation /> : ""} */}
       <div className="modalRawMaterialInfo">
         <img
           src={CloseIcon}

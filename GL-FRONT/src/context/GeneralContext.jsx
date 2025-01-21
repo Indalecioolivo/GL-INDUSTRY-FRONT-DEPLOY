@@ -577,6 +577,10 @@ export function GeneralContextProvider({ children }) {
     }
   }
 
+  async function deleteRawMaterial() {
+    "teste2";
+  }
+
   return (
     <GeneralContext.Provider
       value={{
