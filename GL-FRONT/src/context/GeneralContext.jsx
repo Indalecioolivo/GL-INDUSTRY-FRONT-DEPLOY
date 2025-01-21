@@ -38,6 +38,7 @@ export function GeneralContextProvider({ children }) {
       price: "",
     },
   });
+  const [showModalConfirmation, setShowModalConfirmation] = useState(false);
   const [productRegister, setProductRegister] = useState({
     bar_code: "",
     name: "",
@@ -578,7 +579,23 @@ export function GeneralContextProvider({ children }) {
   }
 
   async function deleteRawMaterial() {
-    "teste2";
+    const { id } = toRawMaterialInformations;
+    try {
+      const result = await api.delete(`/raw-materials/${id}`);
+      setShowModalAlert({
+        showModal: true,
+        message: result.data.message,
+        status: result.status,
+      });
+      await getAllRawMaterial();
+      setShowModalConfirmation(false);
+    } catch (error) {
+      setShowModalAlert({
+        showModal: true,
+        message: result.data.message,
+        status: result.status,
+      });
+    }
   }
 
   return (
@@ -642,6 +659,9 @@ export function GeneralContextProvider({ children }) {
         setToEditRawMaterial,
         handleOpenModalEditRawMaterial,
         patchRawMaterial,
+        showModalConfirmation,
+        setShowModalConfirmation,
+        deleteRawMaterial,
       }}
     >
       {children}

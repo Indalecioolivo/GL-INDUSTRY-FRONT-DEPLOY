@@ -11,12 +11,23 @@ export default function ModalToInfoRawMaterial() {
     handleOpenModalRawMaterialInformations,
     handleOpenModalEditRawMaterial,
     showModalAlert,
+    showModalConfirmation,
+    setShowModalConfirmation,
+    deleteRawMaterial,
   } = useContext(GeneralContext);
+
+  function handleExclude(e) {
+    setShowModalConfirmation(true);
+  }
 
   return (
     <div className="modalRawMaterialInfo-container">
       {showModalAlert.showModal ? <ModalAlert /> : ""}
-      {/* {true ? <ModalConfirmation /> : ""} */}
+      {showModalConfirmation ? (
+        <ModalConfirmation action={deleteRawMaterial} />
+      ) : (
+        ""
+      )}
       <div className="modalRawMaterialInfo">
         <img
           src={CloseIcon}
@@ -34,10 +45,7 @@ export default function ModalToInfoRawMaterial() {
           <button onClick={() => handleOpenModalEditRawMaterial(true)}>
             Editar Matéria Prima
           </button>
-          <button
-            className="btn-exclude"
-            // onClick={(e) => handleExclude(e)}
-          >
+          <button className="btn-exclude" onClick={(e) => handleExclude(e)}>
             Excluir Matéria Prima
           </button>
         </div>
