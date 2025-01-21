@@ -35,6 +35,9 @@ export default function NavBar() {
           alt=""
         />
       </Link>
+      <Link to="/flows-raw-material">
+        <img src={FlowIcon} alt="" />
+      </Link>
     </nav>
   );
 }
