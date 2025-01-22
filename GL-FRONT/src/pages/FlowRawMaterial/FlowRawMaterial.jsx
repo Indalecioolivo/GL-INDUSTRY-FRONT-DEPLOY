@@ -3,6 +3,8 @@ import { useContext, useEffect } from "react";
 import { GeneralContext } from "../../context/GeneralContext";
 import SearchModule from "../../modules/SearchModule/SearchModule";
 import ModalToFlowsInfos from "../../modules/ModalToFlowsInfos/ModalToFlowsInfos";
+import ModalEditFlowRawMaterial from "../../modules/ModalEditFlowRawMaterial/ModalEditFlowRawMaterial";
+import ModalAlert from "../../modules/ModalAlert/ModalAlert";
 
 export default function FlowRawMaterial() {
   const {
@@ -10,6 +12,8 @@ export default function FlowRawMaterial() {
     flowRawMaterialData,
     toModalFlowInfos,
     setToModalFlowInfos,
+    toModalEditFlowRawMaterial,
+    showModalAlert,
   } = useContext(GeneralContext);
   useEffect(() => {
     setTitleContentHome("Fluxo de Matéria Prima");
@@ -18,6 +22,8 @@ export default function FlowRawMaterial() {
   return (
     <section className="stock-flow-container">
       {toModalFlowInfos.showModal ? <ModalToFlowsInfos /> : ""}
+      {toModalEditFlowRawMaterial.showModal ? <ModalEditFlowRawMaterial /> : ""}
+      {showModalAlert.showModal ? <ModalAlert /> : ""}
       <SearchModule />
       <table>
         <thead>
@@ -40,6 +46,7 @@ export default function FlowRawMaterial() {
                   date: flow.date,
                   type: flow.type,
                   bar_code: flow.rawMaterial_bar_code,
+                  id: flow.id,
                 })
               }
             >

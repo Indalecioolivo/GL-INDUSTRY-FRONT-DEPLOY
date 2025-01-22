@@ -29,6 +29,14 @@ export function GeneralContextProvider({ children }) {
     date: "",
     type: "",
     bar_code: "",
+    id: "",
+  });
+  const [toModalEditFlowRawMaterial, setToModalEditFlowRawMaterial] = useState({
+    showModal: false,
+    amount: "",
+    type: "",
+    bar_code: "",
+    id: "",
   });
   const [showModalAlert, setShowModalAlert] = useState({
     showModal: false,
@@ -552,7 +560,33 @@ export function GeneralContextProvider({ children }) {
       });
     }
   }
+  async function patchFlowRawMaterial() {
+    let { id, type, bar_code, amount } = toModalEditFlowRawMaterial;
+    try {
+      const result = await api.patch(`/flows-raw-materials/${id}`, {
+        type,
+        bar_code,
+        amount,
+      });
+      if (result.status === 200) {
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+      }
+      await getAllFlowsRawMaterial();
+      await getAllRawMaterial();
+    } catch (error) {
+      console.log(error);
 
+      setShowModalAlert({
+        showModal: true,
+        message: error.response.data.message,
+        status: error.response.status,
+      });
+    }
+  }
   async function deleteFlow() {
     const { id } = toModalInformations.flowInfos;
 
@@ -685,6 +719,9 @@ export function GeneralContextProvider({ children }) {
         getAllFlowsRawMaterial,
         toModalFlowInfos,
         setToModalFlowInfos,
+        toModalEditFlowRawMaterial,
+        setToModalEditFlowRawMaterial,
+        patchFlowRawMaterial,
       }}
     >
       {children}
