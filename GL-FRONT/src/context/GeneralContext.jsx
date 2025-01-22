@@ -649,6 +649,27 @@ export function GeneralContextProvider({ children }) {
       });
     }
   }
+  async function deleteFlowRawMaterial() {
+    console.log(toModalFlowInfos);
+    const { id } = toModalFlowInfos;
+    try {
+      const result = await api.delete(`/flows-raw-materials/${id}`);
+      setShowModalAlert({
+        showModal: true,
+        message: result.data.message,
+        status: result.status,
+      });
+      await getAllFlowsRawMaterial();
+      await getAllRawMaterial();
+      setShowModalConfirmation(false);
+    } catch (error) {
+      setShowModalAlert({
+        showModal: true,
+        message: result.data.message,
+        status: result.status,
+      });
+    }
+  }
 
   return (
     <GeneralContext.Provider
@@ -722,6 +743,7 @@ export function GeneralContextProvider({ children }) {
         toModalEditFlowRawMaterial,
         setToModalEditFlowRawMaterial,
         patchFlowRawMaterial,
+        deleteFlowRawMaterial,
       }}
     >
       {children}

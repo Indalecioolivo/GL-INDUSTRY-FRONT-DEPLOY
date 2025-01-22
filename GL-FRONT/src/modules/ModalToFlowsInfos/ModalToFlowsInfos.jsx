@@ -2,6 +2,7 @@ import "./ModalToFlowsInfos.css";
 import CloseIcon from "../../assets/close-icon.png";
 import { GeneralContext } from "../../context/GeneralContext";
 import { useContext } from "react";
+import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
 
 export default function ModalToFlowsInfos() {
   const {
@@ -9,6 +10,9 @@ export default function ModalToFlowsInfos() {
     setToModalFlowInfos,
     toModalEditFlowRawMaterial,
     setToModalEditFlowRawMaterial,
+    showModalConfirmation,
+    setShowModalConfirmation,
+    deleteFlowRawMaterial,
   } = useContext(GeneralContext);
   const { title, amount, date, type, bar_code, id } = toModalFlowInfos;
   function handleCloseModal(e) {
@@ -25,9 +29,17 @@ export default function ModalToFlowsInfos() {
       id,
     });
   }
+  function handleExclude() {
+    setShowModalConfirmation(true);
+  }
 
   return (
     <div className="modalFlowInfos-container">
+      {showModalConfirmation ? (
+        <ModalConfirmation action={deleteFlowRawMaterial} />
+      ) : (
+        ""
+      )}
       <div className="flowsInfos-modal">
         <img src={CloseIcon} alt="" onClick={(e) => handleCloseModal(e)} />
         <h2>Fluxo de {title}</h2>
@@ -41,7 +53,9 @@ export default function ModalToFlowsInfos() {
         <p>{bar_code}</p>
         <div className="for-buttons">
           <button onClick={(e) => handleOpenModalEdit()}>Editar Fluxo</button>
-          <button className="btn-exclude">Excluir Fluxo</button>
+          <button className="btn-exclude" onClick={() => handleExclude()}>
+            Excluir Fluxo
+          </button>
         </div>
       </div>
     </div>
