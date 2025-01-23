@@ -2,6 +2,8 @@
 import { useContext, useEffect } from "react";
 import { GeneralContext } from "../../context/GeneralContext";
 import SearchModule from "../../modules/SearchModule/SearchModule";
+import FilterRegisterModule from "../../modules/FilterRegisterModule/FilterRegisterModule";
+import ModalToRegisterFlowRawMaterial from "../../modules/ModalToRegisterFlowRawMaterial/ModalToRegisterFlowRawMaterial";
 import ModalToFlowsInfos from "../../modules/ModalToFlowsInfos/ModalToFlowsInfos";
 import ModalEditFlowRawMaterial from "../../modules/ModalEditFlowRawMaterial/ModalEditFlowRawMaterial";
 import ModalAlert from "../../modules/ModalAlert/ModalAlert";
@@ -21,10 +23,11 @@ export default function FlowRawMaterial() {
 
   return (
     <section className="stock-flow-container">
+      <FilterRegisterModule />
+      {true ? <ModalToRegisterFlowRawMaterial /> : ""}
       {toModalFlowInfos.showModal ? <ModalToFlowsInfos /> : ""}
       {toModalEditFlowRawMaterial.showModal ? <ModalEditFlowRawMaterial /> : ""}
       {showModalAlert.showModal ? <ModalAlert /> : ""}
-      <SearchModule />
       <table>
         <thead>
           <tr>
