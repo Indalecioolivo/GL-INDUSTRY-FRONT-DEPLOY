@@ -38,6 +38,10 @@ export function GeneralContextProvider({ children }) {
     bar_code: "",
     id: "",
   });
+  const [showModalRegisterFlowMaterial, setShowModalRegisterFlowMaterial] =
+    useState(false);
+  const [toModalRegisterFlowRawMaterial, setToModalRegisterFlowRawMaterial] =
+    useState({ amount: "", type: "", bar_code: "" });
   const [showModalAlert, setShowModalAlert] = useState({
     showModal: false,
     message: "",
@@ -370,7 +374,6 @@ export function GeneralContextProvider({ children }) {
       console.log(error);
     }
   }
-
   async function postNewRawMaterial() {
     try {
       const { name, bar_code, amount } = rawMaterialRegister;
@@ -379,22 +382,53 @@ export function GeneralContextProvider({ children }) {
         bar_code,
         stock: Number(amount),
       });
-      console.log(result);
       if (result.status === 201) {
-        console.log(showModalAlert);
         setShowModalAlert({
           showModal: true,
           message: result.data.message,
           status: result.status,
         });
-        console.log(showModalAlert);
         setRawMaterialRegister({
           name: "",
           bar_code: "",
           amount: 0,
         });
-        console.log(showModalAlert);
         await getAllRawMaterial();
+        // setShowModalRegisterRawMaterial(false);
+      }
+    } catch (error) {
+      if (error.status === 400 || error.status === 404) {
+        setShowModalAlert({
+          showModal: true,
+          message: error.response.data.message,
+          status: error.response.status,
+        });
+      }
+    }
+  }
+  async function postNewFlowRawMaterial() {
+    let { amount, type, bar_code } = toModalRegisterFlowRawMaterial;
+    amount = Number(amount);
+    console.log(toModalRegisterFlowRawMaterial);
+    try {
+      const result = await api.post("/flows-raw-materials", {
+        amount,
+        type,
+        bar_code,
+      });
+      if (result.status === 201) {
+        setShowModalAlert({
+          showModal: true,
+          message: result.data.message,
+          status: result.status,
+        });
+        setToModalRegisterFlowRawMaterial({
+          type: "",
+          bar_code: "",
+          amount: "",
+        });
+        await getAllRawMaterial();
+        await getAllFlowsRawMaterial();
         // setShowModalRegisterRawMaterial(false);
       }
     } catch (error) {
@@ -744,6 +778,11 @@ export function GeneralContextProvider({ children }) {
         setToModalEditFlowRawMaterial,
         patchFlowRawMaterial,
         deleteFlowRawMaterial,
+        toModalRegisterFlowRawMaterial,
+        setToModalRegisterFlowRawMaterial,
+        showModalRegisterFlowMaterial,
+        setShowModalRegisterFlowMaterial,
+        postNewFlowRawMaterial,
       }}
     >
       {children}

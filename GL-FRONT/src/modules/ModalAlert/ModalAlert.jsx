@@ -20,6 +20,7 @@ export default function ModalAlert() {
     setToRawMaterialInformations,
     setToModalEditFlowRawMaterial,
     setToModalFlowInfos,
+    setShowModalRegisterFlowMaterial,
   } = useContext(GeneralContext);
   function handleCloseModal() {
     if (showModalAlert.status == 201 || showModalAlert.status == 200) {
@@ -32,6 +33,7 @@ export default function ModalAlert() {
       setToRawMaterialInformations(false);
       setToModalEditFlowRawMaterial(false);
       setToModalFlowInfos(false);
+      setShowModalRegisterFlowMaterial(false);
     } else {
       setShowModalAlert({ ...showModalAlert, showModal: false });
     }

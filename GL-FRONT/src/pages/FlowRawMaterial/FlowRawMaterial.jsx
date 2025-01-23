@@ -16,6 +16,8 @@ export default function FlowRawMaterial() {
     setToModalFlowInfos,
     toModalEditFlowRawMaterial,
     showModalAlert,
+    showModalRegisterFlowMaterial,
+    setShowModalRegisterFlowMaterial,
   } = useContext(GeneralContext);
   useEffect(() => {
     setTitleContentHome("Fluxo de Matéria Prima");
@@ -23,8 +25,10 @@ export default function FlowRawMaterial() {
 
   return (
     <section className="stock-flow-container">
-      <FilterRegisterModule />
-      {true ? <ModalToRegisterFlowRawMaterial /> : ""}
+      <FilterRegisterModule
+        functionOpenModal={setShowModalRegisterFlowMaterial}
+      />
+      {showModalRegisterFlowMaterial ? <ModalToRegisterFlowRawMaterial /> : ""}
       {toModalFlowInfos.showModal ? <ModalToFlowsInfos /> : ""}
       {toModalEditFlowRawMaterial.showModal ? <ModalEditFlowRawMaterial /> : ""}
       {showModalAlert.showModal ? <ModalAlert /> : ""}
