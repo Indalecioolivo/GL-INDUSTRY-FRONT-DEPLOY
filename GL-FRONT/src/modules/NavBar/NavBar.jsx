@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import StockIcon from "../../assets/stock-icon.png";
 import ProductIcon from "../../assets/product-icon.png";
 import FlowIcon from "../../assets/flow-icon.png";
+import FlowRawIcon from "../../assets/flow-raw-icon.png";
 import RawMaterial from "../../assets/chemical-icon.png";
 
 export default function NavBar() {
@@ -34,6 +35,9 @@ export default function NavBar() {
           src={RawMaterial}
           alt=""
         />
+      </Link>
+      <Link to="/flows-raw-material">
+        <img src={FlowRawIcon} alt="" />
       </Link>
     </nav>
   );

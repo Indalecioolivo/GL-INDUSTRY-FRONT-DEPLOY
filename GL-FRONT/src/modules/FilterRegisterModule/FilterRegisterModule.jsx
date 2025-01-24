@@ -1,13 +1,9 @@
 import "./FilterRegisterModule.css";
 import SearchIcon from "../../assets/search-icon.png";
-import { GeneralContext } from "../../context/GeneralContext";
-import { useContext } from "react";
 
-export default function FilterRegisterModule() {
-  const { showModalRegisterRawMaterial, setShowModalRegisterRawMaterial } =
-    useContext(GeneralContext);
+export default function FilterRegisterModule({ functionOpenModal }) {
   function handleClickOpenModal() {
-    setShowModalRegisterRawMaterial(true);
+    functionOpenModal(true);
   }
   return (
     <div className="filter-register-div">

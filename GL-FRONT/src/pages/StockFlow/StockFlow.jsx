@@ -18,6 +18,7 @@ export default function StockFlow() {
   useEffect(() => {
     setTitleContentHome("Fluxo Estoque");
   }, []);
+
   return (
     <section className="stock-flow-container">
       {showModalRegister.showModal ? <ModalRegister /> : ""}

@@ -9,6 +9,7 @@ import StockModule from "./pages/StockModule/StockModule.jsx";
 import RegisteredProducts from "./pages/RegisteredProducts/RegisteredProducts.jsx";
 import StockFlow from "./pages/StockFlow/StockFlow.jsx";
 import RawMaterial from "./pages/RawMaterial/RawMaterial.jsx";
+import FlowRawMaterial from "./pages/FlowRawMaterial/FlowRawMaterial.jsx";
 import { PrivateRoutes, UnPrivateRoutes } from "./routes/routes.jsx";
 
 const router = createBrowserRouter([
@@ -45,6 +46,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <RawMaterial />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/flows-raw-material",
+        element: (
+          <PrivateRoutes>
+            <FlowRawMaterial />
           </PrivateRoutes>
         ),
       },

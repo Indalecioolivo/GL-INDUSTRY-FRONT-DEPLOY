@@ -7,7 +7,7 @@ export default function ModalConfirmation({ action }) {
   return (
     <div className="modal-confirmation-container">
       <h3>Deseja prosseguir com a ação?</h3>
-      <div className="for-buttons">
+      <div className="to-buttons">
         <button onClick={() => action()}>Sim</button>
         <button
           className="btn-exclude"

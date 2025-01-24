@@ -6,13 +6,19 @@ import Header from "./modules/Header/Header";
 import NavBar from "./modules/NavBar/NavBar";
 
 function App() {
-  const { getUserData, getAllProducts, getAllFlows, getAllRawMaterial } =
-    useContext(GeneralContext);
+  const {
+    getUserData,
+    getAllProducts,
+    getAllFlows,
+    getAllRawMaterial,
+    getAllFlowsRawMaterial,
+  } = useContext(GeneralContext);
   useEffect(() => {
     getUserData();
     getAllProducts();
     getAllFlows();
     getAllRawMaterial();
+    getAllFlowsRawMaterial();
   }, []);
   return (
     <div className="home-container">

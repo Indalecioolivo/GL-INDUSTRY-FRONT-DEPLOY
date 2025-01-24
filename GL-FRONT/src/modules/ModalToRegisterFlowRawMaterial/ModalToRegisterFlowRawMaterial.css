@@ -1,4 +1,4 @@
-.modalrawmaterial-container {
+.modal-register-flow-raw-material-container {
   width: 100vw;
   height: 100vh;
   background-color: rgba(139, 198, 233, 0.5);
@@ -13,8 +13,7 @@
 
   z-index: 2;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial {
+.modal-register-flow-raw-material-container .modal-register {
   /* border: 1px solid black; */
   width: 40rem;
   height: 45rem;
@@ -23,8 +22,7 @@
   background-color: var(--secondary);
   z-index: 1;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial img {
+.modal-register-flow-raw-material-container .modal-register img {
   height: 2.5rem;
 
   position: relative;
@@ -34,40 +32,37 @@
 
   cursor: pointer;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial img:hover {
+.modal-register-flow-raw-material-container .modal-register img:hover {
   background-color: var(--hovers);
   border-radius: 50%;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial h2 {
+.modal-register-flow-raw-material-container .modal-register h2 {
   height: 2.5rem;
   text-align: center;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial form {
+.modal-register-flow-raw-material-container .modal-register form {
   padding-left: 3rem;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial label {
+.modal-register-flow-raw-material-container .modal-register form label {
   margin-top: 1rem;
   display: inline-block;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial input {
+.modal-register-flow-raw-material-container .modal-register form input,
+.modal-register-flow-raw-material-container .modal-register form select {
   width: 34rem;
   height: 2rem;
   display: block;
   padding-left: 0.5rem;
   font-size: medium;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial p {
+.modal-register-flow-raw-material-container .modal-register p {
   color: red;
   font-size: small;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial form .button-register {
+.modal-register-flow-raw-material-container
+  .modal-register
+  form
+  .button-register {
   width: 15rem;
   height: 3.5rem;
 
@@ -82,7 +77,9 @@
   font-size: medium;
   cursor: pointer;
 }
-
-.modalrawmaterial-container .modal-add-rawmaterial form .button-register:hover {
+.modal-register-flow-raw-material-container
+  .modal-register
+  form
+  .button-register:hover {
   background-color: var(--hovers);
 }

@@ -16,6 +16,7 @@ export default function RawMaterial() {
     handleOpenModalRawMaterialInformations,
     toEditRawMaterial,
     setTitleContentHome,
+    setShowModalRegisterRawMaterial,
   } = useContext(GeneralContext);
 
   useEffect(() => {
@@ -24,7 +25,9 @@ export default function RawMaterial() {
 
   return (
     <section className="stock-module-container">
-      <FilterRegisterModule />
+      <FilterRegisterModule
+        functionOpenModal={setShowModalRegisterRawMaterial}
+      />
       {showModalRegisterRawMaterial ? <ModalToRegisterRawMaterial /> : ""}
       {toRawMaterialInformations.showModal ? <ModalToInfoRawMaterial /> : ""}
       {toEditRawMaterial.showModal ? <ModalEditRawMaterial /> : ""}

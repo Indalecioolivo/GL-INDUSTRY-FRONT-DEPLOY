@@ -97,7 +97,7 @@ export default function ModalEditProductOrFlow() {
       ) : (
         <div className="modal-edit-box">
           <img src={CloseIcon} alt="" onClick={(e) => handleCloseModal(e)} />
-          <h2>Editar flow</h2>
+          <h2>Editar Flow</h2>
           <form action="" onSubmit={(e) => handleSubmitEditFlow(e)}>
             <label htmlFor="flowType">Tipo de Fluxo:</label>
             <select
@@ -110,7 +110,7 @@ export default function ModalEditProductOrFlow() {
               <option value="Produção">Produção</option>
               <option value="Venda">Venda</option>
             </select>
-            <label htmlFor="">Código de Barras</label>
+            <label htmlFor="bar_code">Código de Barras</label>
             <input
               type="text"
               id="bar_code"
